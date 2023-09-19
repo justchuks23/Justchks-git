@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'asset/img/icon.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'asset/img/icon.png' %}">
+
+    <title>Zoom2YouTube</title>
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap" />
+    <!-- Nucleo Icons -->
+    <link href="{% static 'asset/css/nucleo-icons.css' %}" rel="stylesheet" />
+    <link href="{% static 'asset/css/nucleo-svg.css' %}" rel="stylesheet" />
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <!-- CSS Files -->
+    <link id="pagestyle" href="{% static 'asset/css/material-dashboard.css' %}" rel="stylesheet" />
+	<!--- Custom Css Files -->
+	<link rel="stylesheet" href="{% static 'asset/css/custom.css' %}">
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+
+</head>
+<body class="g-sidenav-show  bg-gray-200">
+{% block body %}
+    {% block aside_bar %}
+
+    {% endblock %}
+
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        {% block navbar %}
+        <!-- Navbar -->
+        <!-- End Navbar -->
+        {% endblock %}
+
+        {% block pagination %}
+
+        {% endblock %}
+        <div class="container-fluid py-3 container-fluid-height">
+            {% block zoom_list %}
+
+            {% endblock %}
+
+            {% block footer %}
+
+            {% endblock %}
+        </div>
+    </main>
+{% endblock %}
+    <!--   Core JS Files   -->
+    <script src="{% static 'asset/js/core/popper.min.js' %}"></script>
+    <script src="{% static 'asset/js/core/bootstrap.min.js' %}"></script>
+    <script src="{% static 'asset/js/plugins/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'asset/js/plugins/smooth-scrollbar.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{% static 'asset/js/material-dashboard.js' %}"></script>
+    <script src="{% static 'asset/js/custom.js' %}"></script>
+
+</body>
+
+</html>
