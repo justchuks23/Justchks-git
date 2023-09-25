@@ -13,9 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # django-crontab logfile
-RUN mkdir cron
-RUN touch cron/cron.log
+RUN mkdir /cron
+RUN touch /cron/cron.log
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "python manage.py runserver 0.0.0.0:8000 && tail -f cron/cron.log"]
+CMD ["sh", "-c", "python manage.py runserver 0.0.0.0:8000 && tail -f /cron/cron.log"]
