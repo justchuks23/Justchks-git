@@ -46,8 +46,6 @@ MY_APPS = [
 
 THIRD_PARTY = [
     'jazzmin',
-    'active_link',
-    'django_crontab',
     'widget_tweaks',
 ]
 
@@ -62,12 +60,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-# cronjob
-
-# CRONJOBS = [
-#     ('* * * * *', 'core.cron.print_hello', '>> /cron/django_cron.log 2>&1'),
-# ]
 
 # logging
 """
@@ -86,7 +78,7 @@ LOGGING = {
         'cron_file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': 'cron/cron.log',  # Replace with the desired path to your log file
+            'filename': '/cron/cron.log',  # Replace with the desired path to your log file
         },
     },
     'loggers': {
