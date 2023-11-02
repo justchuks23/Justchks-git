@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY', cast=str)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool, default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['zoomvideoautomation.bincom.net', '40.117.178.47']  # added domain name and ip adress
 
 
 # Application definition
@@ -170,6 +170,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR/'static']
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # added this
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/"media"
@@ -182,6 +183,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'main:admin_login'
 LOGIN_REDIRECT_URL = 'main:home'
 LOGOUT_REDIRECT_URL = 'main:admin_login'
+
+"""
+On production, For the email settings, ensure you set accordingly to django protocol: Gmail, Yahoo or Onedrive.
+For now it is using the console command
+"""
+# Email Settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = ''
+EMAIL_PORT = 465  # 587 is for TLS
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False
+EMAIL_HOST_USER = 'localhost'
+EMAIL_HOST_PASSWORD = ''
+
+
+CORS_ALLOWED_ORIGINS = ['https://zoomvideoautomation.bincom.net']  # added this
+
+CSRF_TRUSTED_ORIGINS = ['https://zoomvideoautomation.bincom.net']  # added this
 
 # Celery settings
 CELERY_BROKER_URL = "redis://redis:6379"
