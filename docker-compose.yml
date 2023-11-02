@@ -35,7 +35,7 @@ services:
     env_file:
       - .env
     ports:
-      - "9000:9000"
+      - "5000:5000"
     environment:
       - DB_HOST=db
       - DB_NAME=postgres
