@@ -1,0 +1,40 @@
+{% extends 'base/form-base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block form_body %}
+
+    <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+        <div id="background_img" class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center">
+            <img src="{% static 'asset/img/bincom_login.png' %}" alt="" srcset="">
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5 form-box">
+        <div class="logo-img"><img src="{% static 'asset/img/bincom dev center transparent 1.png' %}" alt="" srcset=""></div>
+        <div class="card card-plain">
+            <div class="card-header">
+                <h4 class="font-weight-bolder">Enter New Password</h4>
+                <p class="mb-0">
+                    Please, enter your new password twice to confirm if they are the same.
+                </p>
+            </div>
+            <div class="card-body">
+                <form role="form" method="POST">
+                    {% csrf_token %}
+                    <input class="hidden" autocomplete="username" value="{{ form.user.get_username }}" hidden aria-hidden="true">
+
+                    <div class="input-group input-group-outline mb-3">
+                        {% render_field form.new_password1|attr:"autofocus" placeholder="New Password" class="form-control"%}
+                    </div>
+                    <div class="input-group input-group-outline mb-3">
+                        {% render_field form.new_password2|attr:"autofocus" placeholder="Confirm Password" class="form-control"%}
+                    </div>
+                    <div class="text-center">
+                         <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Change my Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
