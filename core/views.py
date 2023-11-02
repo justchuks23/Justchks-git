@@ -1,13 +1,13 @@
 from os.path import join
 
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib import messages
+from django.contrib.auth.views import LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from django.shortcuts import redirect, get_object_or_404, render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import View, ListView, DetailView, FormView
-from django.shortcuts import redirect, get_object_or_404, render
 from django.views.generic.detail import SingleObjectMixin
 
 from .cron import run_user_zoom_downloader
@@ -42,6 +42,27 @@ class AdminLoginView(View):
 
 class AdminLogoutView(LogoutView):
     next_page = reverse_lazy('main:admin_login')
+
+
+class AdminPasswordResetView(PasswordResetView):
+    template_name = 'forms/password_reset.html'
+    success_url = reverse_lazy('main:password_reset_done')
+    email_template_name = 'forms/password_email_reset_link.html'
+
+
+class AdminPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'forms/reset_done.html'
+
+
+class AdminPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'forms/reset_confirm.html'
+
+    def get_success_url(self):
+        return reverse_lazy('main:password_reset_complete')
+
+
+class AdminPasswordResetCompleteView(PasswordResetCompleteView):
+    template_name = 'forms/reset_complete.html'
 
 
 class ZoomVideoListView(LoginRequiredMixin, ListView):
