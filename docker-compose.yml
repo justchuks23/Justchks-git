@@ -5,7 +5,7 @@ services:
     image: postgres:alpine
     container_name: db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     env_file:
       - .env
     volumes:
@@ -30,10 +30,12 @@ services:
     container_name: cron-z2y-django
     volumes:
       - mydata:/app/data
+      - static:/app/staticfiles
+      - media:/app/media
     env_file:
       - .env
     ports:
-      - "8000:8000"
+      - "9000:9000"
     environment:
       - DB_HOST=db
       - DB_NAME=postgres
@@ -56,3 +58,5 @@ services:
       - mydata:/app/data
 volumes:
   mydata:
+  static:
+  media:
