@@ -1,16 +1,15 @@
 FROM python:3.11-slim
 
-# Install additional dependencies including PostgreSQL development libraries
-RUN apt-get update && apt-get install -y --no-install-recommends libpq-dev gcc && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y cron sqlite3 && rm -rf /var/lib/apt/lists/*
+
 RUN python3 -m pip install pip --upgrade
+
 
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /usr/src/app
 
 COPY ./requirements.txt ./
-
-#Added these two lines of COPY below
 COPY ./static /app/staticfiles
 #COPY ./media /app/media
 

@@ -32,8 +32,8 @@ services:
       - mydata:/app/data
       - static:/app/staticfiles
       - media:/app/media
-    env_file:
-      - .env
+    #env_file:
+      #- .env
     ports:
       - "5000:5000"
     environment:
