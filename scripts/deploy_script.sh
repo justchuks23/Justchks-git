@@ -8,4 +8,4 @@ sudo docker stop $ZOOM_YOUTUBE_INTEGRATION_CONTAINER && sudo docker rm $ZOOM_YOU
 sudo docker system prune -f
 sudo docker volume prune -f
 ######################################################################################################################
-docker-compose -f docker-compose.yml up -d --build
+docker-compose -f docker-compose.yml up -d 
