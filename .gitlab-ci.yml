@@ -19,6 +19,8 @@ build:
     image: docker:20.10.13-alpine3.15
     services:
         - docker:20.10.13-dind-alpine3.15
+    tags:
+        - development
     script:
         - chmod u+x scripts/build_script.sh
         - ./scripts/build_script.sh
@@ -37,6 +39,8 @@ build:
 push:
     stage: push
     image: docker:20.10.13-alpine3.15
+    tags:
+        - development
     before_script:
         - ls scripts/*
         - chmod u+x scripts/before_script.sh
@@ -54,12 +58,14 @@ push:
 deploy:
     stage: deploy
     image: docker:20.10.13-alpine3.15
+    tags:
+        - development
     before_script:
         - chmod u+x scripts/before_script.sh
         - ./scripts/before_script.sh
     script: 
        
-       - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S sh -c 'export ZOOM_YOUTUBE_INTEGRATION_IMAGE=\"$ZOOM_YOUTUBE_INTEGRATION_IMAGE\" && export DB_HOST=$DB_HOST && export DB_NAME=$DB_NAME && export DB_USER=$DB_USER && export DB_PASSWORD=$DB_PASSWORD && export SECRET_KEY=\"$SECRET_KEY\" && chmod u+x deploy_script.sh && ./deploy_script.sh'"
+       - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S sh -c 'export ZOOM_YOUTUBE_INTEGRATION_IMAGE=\"$ZOOM_YOUTUBE_INTEGRATION_IMAGE\" && export SECRET_KEY=\"$SECRET_KEY\" && chmod u+x deploy_script.sh && ./deploy_script.sh'"
 
 
       
