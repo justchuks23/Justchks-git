@@ -9,8 +9,8 @@ variables:
     SERVER_IP: 40.117.178.47
     SERVER_USER: james_chukwu
     SERVER_PASSWORD: james@123!
-    ZOOM_YOUTUBE_INTEGRATION_IMAGE: z2y-james-django-chukw:$CI_COMMIT_SHORT_SHA
-    ZOOM_YOUTUBE_INTEGRATION_CONTAINER: z2y-james-django-chukwu
+    Z2Y_IMAGE: cron-z2y-django:$CI_COMMIT_SHORT_SHA
+    Z2Y_CONTAINER: cron-z2y-django
     SECRET_KEY: django-insecure-o7l56$7sd-k@81rx+489$#4nm&%1c83!b=1x21n1pkus3$akjz
    
 
@@ -68,7 +68,7 @@ deploy:
         - ./scripts/before_script.sh
     script: 
        
-       - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S sh -c 'export ZOOM_YOUTUBE_INTEGRATION_IMAGE=\"$ZOOM_YOUTUBE_INTEGRATION_IMAGE\" && export SECRET_KEY=\"$SECRET_KEY\" && chmod u+x deploy_script.sh && ./deploy_script.sh'"
+       - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S sh -c 'export Z2Y_IMAGE=\"$Z2Y_IMAGE\" && export SECRET_KEY=\"$SECRET_KEY\" && chmod u+x deploy_script.sh && ./deploy_script.sh'"
 
 
       
