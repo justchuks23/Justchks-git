@@ -7,8 +7,8 @@ echo "SECRET_KEY=$SECRET_KEY" >> .env
 ls -la
 cat .env 
 
-docker build -t $ZOOM_YOUTUBE_INTEGRATION_IMAGE .
-docker save $ZOOM_YOUTUBE_INTEGRATION_IMAGE > zoom_youtube_integration.tar
+docker build -t $Z2Y_IMAGE .
+docker save $Z2Y_IMAGE > zoom_youtube_integration.tar
 
 sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | rm deploy_script.sh  zoom_youtube_integration.tar Dockerfile docker-compose.yml || true"
 
