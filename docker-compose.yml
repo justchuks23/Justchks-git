@@ -25,7 +25,7 @@ services:
       - mydata:/app/data
 
   # myApp
-  cron-zoom-youtube-django:
+  cron-z2y-django:
     #build: ./
     image: $ZOOM_YOUTUBE_INTEGRATION_IMAGE
     container_name: cron-z2y-django
@@ -54,7 +54,7 @@ services:
     depends_on:
      # - db
       - redis
-      - cron-zoom-youtube-django
+      - cron-z2y-django
     volumes:
       - mydata:/app/data
 volumes:
