@@ -12,7 +12,7 @@ services:
   # myApp
   cron-z2y-django:
     image: $Z2Y_IMAGE
-    container_name: $Z2Y_CONTAINER
+    container_name: cron-z2y-django
     volumes:
       - mydata:/app/data
       - static:/app/staticfiles
