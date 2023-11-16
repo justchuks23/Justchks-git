@@ -23,7 +23,7 @@ services:
   # Celery
   celery:
     restart: always
-    image: z2y_celery_django
+    build: ./
     container_name: celery
     command: celery -A backend worker -l INFO
     depends_on:
