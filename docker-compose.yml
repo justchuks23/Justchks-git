@@ -25,7 +25,7 @@ services:
     restart: always
     build: ./
     container_name: celery
-    command: celery -A backend worker -l INFO --network=myapp_myapp-network
+    command: celery -A backend worker -l INFO
     depends_on:
       - redis
       - cron-z2y-django
