@@ -1,20 +1,5 @@
 version: '3.11'
 services:
-  # database
-  #db:
-    #image: postgres:alpine
-    #container_name: db
-    #ports:
-     # - "5433:5432"
-    #env_file:
-     # - .env
-    #volumes:
-    #  - mydata:/var/lib/postgresql/data
-    #environment:
-     # - POSTGRES_USER=postgres
-    #  - POSTGRES_PASSWORD=postgres
-   #   - POSTGRES_DB=postgres
-
   # Redis
   redis:
     image: redis:alpine
@@ -22,28 +7,18 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - mydata:/app/data
+      - mydata:/app/data 
 
   # myApp
   cron-z2y-django:
-    #build: ./
     image: $Z2Y_IMAGE
-    container_name: cron-z2y-django
+    container_name: $Z2Y_CONTAINER
     volumes:
       - mydata:/app/data
       - static:/app/staticfiles
       - media:/app/media
-    #env_file:
-      #- .env
     ports:
       - "5000:5000"
-    #environment:
-     # - DB_HOST=db
-      #- DB_NAME=postgres
-      #- DB_USER=postgres
-     # - DB_PASSWORD=postgres
-    #depends_on:
-     # - db
 
   # Celery
   celery:
@@ -52,7 +27,6 @@ services:
     container_name: celery
     command: celery -A backend worker -l INFO
     depends_on:
-     # - db
       - redis
       - cron-z2y-django
     volumes:
