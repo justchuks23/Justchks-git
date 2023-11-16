@@ -7,7 +7,9 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - mydata:/app/data 
+      - mydata:/app/data
+    networks:
+      - backend_network
 
   # myApp
   cron-z2y-django:
@@ -19,6 +21,8 @@ services:
       - media:/app/media
     ports:
       - "5000:5000"
+    networks:
+      - backend_network
 
   # Celery
   celery:
@@ -31,7 +35,11 @@ services:
       - cron-z2y-django
     volumes:
       - mydata:/app/data
+    networks:
+      - backend_network
 volumes:
   mydata:
   static:
   media:
+networks:
+  backend_network:
