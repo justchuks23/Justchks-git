@@ -203,8 +203,8 @@ CORS_ALLOWED_ORIGINS = ['https://zoomvideoautomation.bincom.net']  # added this
 CSRF_TRUSTED_ORIGINS = ['https://zoomvideoautomation.bincom.net']  # added this
 
 # Celery settings
-CELERY_BROKER_URL = "redis://redis:6379"
-CELERY_RESULT_BACKEND = "redis://redis:6379"
+CELERY_BROKER_URL = "redis://redis-james-django-chukwu:6379"
+CELERY_RESULT_BACKEND = "redis://redis-james-django-chukwu:6379"
 
 # google credentials
 ENABLE_VIDEO_CONVERTING = os.environ.get("ENABLE_VIDEO_CONVERTING", "off") == "on"  # converts the zoom recorded videos to YouTube video format
