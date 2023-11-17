@@ -103,7 +103,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'core.context_processor.aside_bar',
             ],
         },
     },
@@ -228,7 +227,7 @@ JAZZMIN_SETTINGS = {
     "site_header": "Developer Base",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "ZoomYouTubeAutomation",
+    "site_brand": "Bincom",
 
     # Welcome text on the login screen
     "welcome_sign": "I am a Developer",
