@@ -1,4 +1,4 @@
-version: '3.11'
+version: "3.11"
 services:
   # Redis
   redis-james-django-chukwu:
@@ -11,14 +11,21 @@ services:
 
   # myApp
   cron-z2y-django:
-    image: $Z2Y_IMAGE
+    build: ./
+    #image: $Z2Y_IMAGE
     container_name: cron-z2y-django
     volumes:
       - mydata:/app/data
       - static:/app/staticfiles
       - media:/app/media
     ports:
-      - "5000:5000"
+      - "5000:80"
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
+      - DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
+      - DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
 
   # Celery
   celery:
@@ -36,4 +43,3 @@ volumes:
   mydata:
   static:
   media:
-

@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY', cast=str)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['zoomvideoautomation.bincom.net', '40.117.178.47']  # added domain name and ip adress
+ALLOWED_HOSTS = ['zoomvideoautomation.bincom.net', '40.117.178.47',"localhost"]  # added domain name and ip adress
 
 
 # Application definition
@@ -168,8 +168,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR/'static']
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # added this
+#STATICFILES_DIRS = [BASE_DIR/'static']
+#STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")  # added this
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/"media"
@@ -197,9 +198,9 @@ EMAIL_HOST_USER = 'localhost'
 EMAIL_HOST_PASSWORD = ''
 
 
-CORS_ALLOWED_ORIGINS = ['https://zoomvideoautomation.bincom.net']  # added this
+CORS_ALLOWED_ORIGINS = ['https://zoomvideoautomation.bincom.net',"http://localhost"]  # added this
 
-CSRF_TRUSTED_ORIGINS = ['https://zoomvideoautomation.bincom.net']  # added this
+CSRF_TRUSTED_ORIGINS = ['https://zoomvideoautomation.bincom.net',"http://localhost"]  # added this
 
 # Celery settings
 CELERY_BROKER_URL = "redis://redis-james-django-chukwu:6379"
