@@ -11,7 +11,11 @@ variables:
     SERVER_PASSWORD: james@123!
     Z2Y_IMAGE: cron-z2y-django:$CI_COMMIT_SHORT_SHA
     Z2Y_CONTAINER: cron-z2y-django
-    SECRET_KEY: django-insecure-o7l56$7sd-k@81rx+489$#4nm&%1c83!b=1x21n1pkus3$akjz
+    SECRET_KEY: django-insecure-72-=h#)@y#a-7*h@od4+_e4oi89%!-e6d@0_4=9+&bqd=1x(vj
+    DEBUG: False
+    DJANGO_SUPERUSER_USERNAME: admin
+    DJANGO_SUPERUSER_EMAIL: admin@gmail.com
+    DJANGO_SUPERUSER_PASSWORD: admin
    
 
 build: 
@@ -68,7 +72,7 @@ deploy:
         - ./scripts/before_script.sh
     script: 
        
-       - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S sh -c 'export Z2Y_IMAGE=\"$Z2Y_IMAGE\" && export SECRET_KEY=\"$SECRET_KEY\" && chmod u+x deploy_script.sh && ./deploy_script.sh'"
+       - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S sh -c 'export Z2Y_IMAGE=\"$Z2Y_IMAGE\" && export SECRET_KEY=\"$SECRET_KEY\" && export DJANGO_SUPERUSER_USERNAME=$DJANGO_SUPERUSER_USERNAME && export DJANGO_SUPERUSER_EMAIL=$DJANGO_SUPERUSER_EMAIL && export DJANGO_SUPERUSER_PASSWORD=$DJANGO_SUPERUSER_PASSWORD && chmod u+x deploy_script.sh && ./deploy_script.sh'"
 
 
       
