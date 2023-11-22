@@ -12,7 +12,7 @@ variables:
     Z2Y_IMAGE: cron-z2y-django:$CI_COMMIT_SHORT_SHA
     Z2Y_CONTAINER: cron-z2y-django
     SECRET_KEY: django-insecure-72-=h#)@y#a-7*h@od4+_e4oi89%!-e6d@0_4=9+&bqd=1x(vj
-    DEBUG: False
+    #DEBUG: False
     DJANGO_SUPERUSER_USERNAME: admin
     DJANGO_SUPERUSER_EMAIL: admin@gmail.com
     DJANGO_SUPERUSER_PASSWORD: admin
