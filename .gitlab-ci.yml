@@ -55,7 +55,7 @@ build:
     script:
         - chmod u+x scripts/push_script.sh
         - ./scripts/push_script.sh
-    ######### Uncomment the lines below to install and enable docker ###########
+    ######### Uncomment the lines below to install and enable docker ############
         - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S chmod u+x docker_installation_script.sh && echo '$SERVER_PASSWORD' | sudo -S ./docker_installation_script.sh"
 
        
