@@ -20,12 +20,12 @@ services:
       - media:/app/media
     ports:
       - "5000:80"
-    env_file:
-      - .env
-    environment:
-      - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
-      - DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
-      - DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
+    #env_file:
+     # - .env
+    #environment:
+     # - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
+      #- DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
+      #- DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
 
   # Celery
   celery:
