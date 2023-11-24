@@ -43,7 +43,7 @@ build:
       #- merge_requests
 
 
-.push:
+push:
     stage: push
     image: docker:20.10.13-alpine3.15
     tags:
