@@ -1,5 +1,26 @@
 version: "3.11"
-services:
+  services:
+    mysqldb-docker:
+      image: mysql
+      container_name: my_mysql
+      restart: 'unless-stopped'
+      volumes:
+        - mysqldb:/var/lib/mysql
+  
+    environment: 
+      MYSQL_ROOT_PASSWORD: django.db.backends.mysql
+      MYSQL_DATABASE: mydjango-database
+      MYSQL_USER: root
+      MYSQL_HOST: localhost
+          
+  
+    environment: 
+      MYSQL_ROOT_PASSWORD: django.db.backends.mysql
+      MYSQL_DATABASE: mydjango-database
+      MYSQL_USER: root
+      MYSQL_HOST: localhost
+          
+
   # Redis
   redis-james-django-chukwu:
     image: redis:alpine
@@ -11,7 +32,7 @@ services:
 
   # myApp
   cron-z2y-django:
-    # build: ./
+    build: ./Users/delll/my_site/zoom-youtube-integration
     image: $Z2Y_IMAGE
     container_name: cron-z2y-django
     volumes:
@@ -40,6 +61,7 @@ services:
       - mydata:/app/data
 
 volumes:
+  mysqldb:
   mydata:
   static:
   media:
