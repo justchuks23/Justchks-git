@@ -10,7 +10,7 @@ services:
       - "3333:3306"    
   
   environment: 
-    MYSQL_ROOT_PASSWORD: django.db.backends.mysql
+    MYSQL_ROOT_PASSWORD: root_password@mysql
     MYSQL_DATABASE: mydjango-database
     MYSQL_USER: root
     MYSQL_HOST: localhost
