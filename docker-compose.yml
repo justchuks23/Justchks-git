@@ -1,24 +1,17 @@
 version: "3.11"
-  services:
-    mysqldb-docker:
-      image: mysql
-      container_name: my_mysql
-      restart: 'unless-stopped'
-      volumes:
-        - mysqldb:/var/lib/mysql
+services:
+  mysqldb-docker:
+    image: mysql
+    container_name: my_mysql
+    restart: 'unless-stopped'
+    volumes:
+      - mysqldb:/var/lib/mysql
   
-    environment: 
-      MYSQL_ROOT_PASSWORD: django.db.backends.mysql
-      MYSQL_DATABASE: mydjango-database
-      MYSQL_USER: root
-      MYSQL_HOST: localhost
-          
-  
-    environment: 
-      MYSQL_ROOT_PASSWORD: django.db.backends.mysql
-      MYSQL_DATABASE: mydjango-database
-      MYSQL_USER: root
-      MYSQL_HOST: localhost
+  environment: 
+    MYSQL_ROOT_PASSWORD: django.db.backends.mysql
+    MYSQL_DATABASE: mydjango-database
+    MYSQL_USER: root
+    MYSQL_HOST: localhost
           
 
   # Redis
