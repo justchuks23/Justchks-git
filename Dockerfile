@@ -5,6 +5,14 @@ RUN apt-get update &&\
     apt-get install -y apt-utils vim curl apache2 apache2-utils python3 libapache2-mod-wsgi-py3 &&\
     apt install -y libgl1-mesa-glx libglib2.0-0 build-essential python3-dev
 
+RUN apt-get update \
+    && apt-get install -y mysql-client default-libmysqlclient-dev
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
+
 RUN ln /usr/bin/python3 /usr/bin/python
 RUN apt-get -y install python3-pip
 RUN ln -sf /usr/bin/pip3 /usr/bin/pip 
