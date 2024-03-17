@@ -27,7 +27,7 @@ services:
 
   # myApp
   cron-z2y-django:
-    build: ./Users/delll/my_site/zoom-youtube-integration
+    build: ./
     image: $Z2Y_IMAGE
     container_name: cron-z2y-django
     volumes:
