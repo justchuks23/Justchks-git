@@ -5,6 +5,9 @@ RUN apt-get update &&\
     apt-get install -y apt-utils vim curl apache2 apache2-utils python3 libapache2-mod-wsgi-py3 &&\
     apt install -y libgl1-mesa-glx libglib2.0-0 build-essential python3-dev
 
+# Install pip
+RUN python -m ensurepip --upgrade
+
 RUN apt-get update \
     && apt-get install -y mysql-client default-libmysqlclient-dev
 
