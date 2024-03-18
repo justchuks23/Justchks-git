@@ -8,8 +8,8 @@ RUN apt-get update &&\
 # Install pip
 RUN apt-get update && apt-get install -y python3-pip
 
-RUN apt-get update \
-    && apt-get install -y mysql-client default-libmysqlclient-dev
+RUN apt-get update &&\
+    apt-get install -y pkg-config && apt-get install -y mysql-client default-libmysqlclient-dev
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
