@@ -30,7 +30,6 @@ RUN mkdir django_app
 RUN chmod -R 777 var/
 
 RUN chmod -R 755 django_app
-RUN mkdir /cron
 RUN touch /cron/cron.log
 
 RUN chown -R www-data:www-data cron/
