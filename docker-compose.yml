@@ -22,13 +22,13 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    container_name: zoom-youtube-integration
-    command: sh -c "python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
+    container_name: cron-z2y-django
+    command: sh -c "python3 manage.py migrate --noinput && python3 manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:5000"
     restart: always
     volumes:
       - .:/app
     ports:
-      - "8000:8000"
+      - "5000:80"
     env_file:
       - .env
     depends_on:
