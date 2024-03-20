@@ -2,12 +2,12 @@ version: "3.11"
 services:
   db:
     image: mysql:latest
-    container_name: my_sql-container
+    container_name: new-mysql
     restart: 'unless-stopped'
     volumes:
       - mydata:/var/lib/mysql
     ports:
-      - "3306:3306"    
+      - "3333:3306"    
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s
