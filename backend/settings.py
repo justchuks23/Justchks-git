@@ -121,7 +121,7 @@ DATABASES = {
          'USER': 'root',
          'PASSWORD': 'root_password@mysql',
          'HOST': '172.17.0.3',
-         'PORT': '52000',
+         'PORT': '3408',
     }
 }
 
