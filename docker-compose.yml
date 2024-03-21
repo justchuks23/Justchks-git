@@ -7,7 +7,7 @@ services:
     volumes:
       - mydata:/var/lib/mysql
     ports:
-      - "3333:3306"    
+      - "3306:3306"    
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s
@@ -16,7 +16,7 @@ services:
       MYSQL_ROOT_PASSWORD: root_password@mysql
       MYSQL_DATABASE: mydjango-database
       MYSQL_USER: root
-      MYSQL_HOST: 172.17.0.3
+      MYSQL_HOST: localhost
    
   backend:
     build: 
