@@ -16,7 +16,7 @@ services:
       MYSQL_ROOT_PASSWORD: root_password@mysql
       MYSQL_DATABASE: mydjango-database
       MYSQL_USER: root
-      MYSQL_HOST: 172.17.0.3
+      
    
   backend:
     build: 
