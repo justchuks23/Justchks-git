@@ -120,8 +120,8 @@ DATABASES = {
          'NAME': 'new-mysql',
          'USER': 'root',
          'PASSWORD': 'root_password@mysql',
-         'HOST': '172.17.0.3',
-         'PORT': '3408',
+         'HOST': 'localhost',
+         'PORT': '3306',
     }
 }
 
