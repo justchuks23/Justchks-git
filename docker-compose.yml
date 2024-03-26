@@ -7,9 +7,9 @@ services:
     volumes:
       - mydata:/var/lib/mysql
     ports:
-      - "3408:3306"    
+      - "4449:3306"    
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "172.17.0.3"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "mysql", "-u", "root", "-padmin"] 
       timeout: 20s
       retries: 10
     environment: 
