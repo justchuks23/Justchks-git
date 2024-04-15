@@ -23,15 +23,22 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: app_backend
-    volumes:
-      - .:/app
-    ports:
-      - "5000:80"
-    env_file:
-      - .env
     depends_on:
       db: 
-        condition: service_healthy    
+        condition: service_healthy   
+    volumes:
+      - "./wait-for-it.sh:/home/wait-for-it.sh"
+    entrypoint:
+      - "/home/wait-for-it.sh"
+      - "mysql:3306"
+      - "-t"
+      - "30"
+      - "--"
+      - "./docker-entrypoint.sh"
+    ports:
+      - "5001:80"
+    env_file:
+      - .env
 
   # Redis
   redis-james-django-chukwu:
