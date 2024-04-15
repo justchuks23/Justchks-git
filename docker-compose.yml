@@ -17,28 +17,6 @@ services:
       MYSQL_DATABASE: mydjango-database
       MYSQL_USER: root
       
-   
-  backend:
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    container_name: app_backend
-    depends_on:
-      db: 
-        condition: service_healthy   
-    volumes:
-      - "./wait-for-it.sh:/home/wait-for-it.sh"
-    entrypoint:
-      - "/home/wait-for-it.sh"
-      - "mysql:3306"
-      - "-t"
-      - "30"
-      - "--"
-      - "./docker-entrypoint.sh"
-    ports:
-      - "5001:80"
-    env_file:
-      - .env
 
   # Redis
   redis-james-django-chukwu:
@@ -54,6 +32,9 @@ services:
     build: ./
     image: $Z2Y_IMAGE
     container_name: cron-z2y-django
+    depends_on:
+      db: 
+        condition: service_healthy   
     volumes:
       - mydata:/app/data
       - static:/app/staticfiles
