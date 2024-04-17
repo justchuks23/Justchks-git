@@ -51,7 +51,6 @@ RUN pip install --upgrade pip &&\
     python manage.py collectstatic --no-input
 
 RUN chown -R www-data:www-data .
-RUN chmod 664 db.sqlite3
 RUN chmod -R 755 .
 #RUN cd .. && chmod -R 777 var/
 
