@@ -2,14 +2,11 @@ FROM ubuntu:latest
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update &&\
-    apt-get install -y apt-utils vim curl apache2 apache2-utils python3 libapache2-mod-wsgi-py3 &&\
+    apt-get install -y apt-utils vim curl default-libmysqlclient-dev pkg-config apache2 apache2-utils python3 libapache2-mod-wsgi-py3 &&\
     apt install -y libgl1-mesa-glx libglib2.0-0 build-essential python3-dev
 
 # Install pip
 RUN apt-get update && apt-get install -y python3-pip
-
-RUN apt-get update &&\
-    apt-get install -y pkg-config && apt-get install -y mysql-client default-libmysqlclient-dev
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
