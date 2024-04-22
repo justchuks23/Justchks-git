@@ -2,7 +2,7 @@ version: "3.11"
 services:
   db:
     image: mysql:latest
-    #container_name: new-mysql
+    container_name: db
     restart: 'always'
     volumes:
       - mydata:/var/lib/mysql
