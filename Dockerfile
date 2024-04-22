@@ -43,9 +43,6 @@ COPY ./site_conf.conf /etc/apache2/sites-available/000-default.conf
 
 RUN pip install --upgrade pip &&\
     pip install -r ./requirements.txt --no-cache && \
-    python manage.py makemigrations && \
-    python manage.py migrate && \
-    python manage.py collectstatic --no-input
 
 RUN chown -R www-data:www-data .
 RUN chmod -R 755 .
