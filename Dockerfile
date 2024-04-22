@@ -42,7 +42,7 @@ COPY ./site_conf.conf /etc/apache2/sites-available/000-default.conf
 #RUN pip3 install --no-cache-dir -r requirements.txt
 
 RUN pip install --upgrade pip &&\
-    pip install -r ./requirements.txt --no-cache && \
+    pip install -r ./requirements.txt --no-cache 
 
 RUN chown -R www-data:www-data .
 RUN chmod -R 755 .
