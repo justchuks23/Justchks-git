@@ -47,20 +47,20 @@ services:
      # - .env
     #environment:
      # - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
-      #- DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
+      #- DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL
       #- DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
 
   # Celery
-  #celery:
-    #restart: always
-    #build: ./
-    #container_name: celery
-    #command: celery -A backend worker -l INFO
-    #depends_on:
-      #- redis-james-django-chukwu
-      #- cron-z2y-django
-    #volumes:
-      #- mydata:/app/data
+  celery:
+    restart: always
+    build: ./
+    container_name: celery
+    command: celery -A backend worker -l INFO
+    depends_on:
+      - redis-james-django-chukwu
+      - cron-z2y-django
+    volumes:
+      - mydata:/app/data
 
 volumes:
   mydata:
