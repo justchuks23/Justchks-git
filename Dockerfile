@@ -3,7 +3,7 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update &&\
     apt-get install -y apt-utils vim curl default-libmysqlclient-dev pkg-config apache2 apache2-utils python3 libapache2-mod-wsgi-py3 &&\
-    apt-get install -y libgl1 mesa0 libglib2.0-0 build-essential python3-dev
+    apt-get install -y libglx-mesa0 libglib2.0-0 build-essential python3-dev
 
 # Install pip
 RUN apt-get update && apt-get install -y python3-pip
