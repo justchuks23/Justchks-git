@@ -3,6 +3,8 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update &&\
     apt-get install -y apt-utils vim curl default-libmysqlclient-dev pkg-config apache2 apache2-utils python3 libapache2-mod-wsgi-py3 &&\
+    apt-get install -y python3-dev &&\
+    rm -rf /var/lib/apt/lists/* &&\ 
     apt-get install -y libgl1-mesa-dev libosmesa6-dev 
 
 # Install pip
