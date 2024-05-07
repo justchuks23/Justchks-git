@@ -1,4 +1,4 @@
-FROM Python:2.7.18
+FROM python:2.7.18
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update &&\
