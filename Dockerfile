@@ -6,7 +6,7 @@ RUN apt-get update &&\
 
 RUN apt-get update && apt-get install -y software-properties-common &&\
     add-apt-repository main &&\
-    apt-get install -y libgl1-mesa-libglx libglib2.0-0 build-essential python3-dev
+    apt-get install -y libgl1-mesa-glx libglib2.0-0 build-essential python3-dev
 
 # Install pip
 RUN apt-get update && apt-get install -y python3-pip
