@@ -1,9 +1,12 @@
-FROM python:2.7.18
+FROM ubuntu:latest
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update &&\
-    apt-get install -y apt-utils vim curl default-libmysqlclient-dev pkg-config apache2 apache2-utils python3 libapache2-mod-wsgi-py3 &&\
-    apt-get install -y libgl1 libglx-mesa0 libglib2.0-0 build-essential python3-dev
+    apt-get install -y apt-utils vim curl default-libmysqlclient-dev pkg-config apache2 apache2-utils python3 libapache2-mod-wsgi-py3 
+
+RUN apt-get update && apt-get install -y software-properties-common &&\
+    add-apt-repository main &&\
+    apt-get install -y libgl1-mesa-libglx libglib2.0-0 build-essential python3-dev
 
 # Install pip
 RUN apt-get update && apt-get install -y python3-pip
