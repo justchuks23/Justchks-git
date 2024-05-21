@@ -17,7 +17,7 @@ using the jwt_auth function parameters.
 
 
 class ZoomJWTClient(object):
-    BASE_URL = 'https://api.zoom.us/v2/'
+    BASE_URL = 'https://api.zoom.us/v2/users/{userId}/**'
 
     def __init__(self, client_id: str, client_secret: str, account_id: str, token_exp_delta: int):
         self.account_id = account_id
