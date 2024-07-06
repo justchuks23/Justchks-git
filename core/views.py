@@ -79,7 +79,7 @@ class GetZoomVideoView(LoginRequiredMixin, View):
         return redirect('main:home', self.kwargs.get('pk'))
     
     def time_viev(self, request):
-        objects = self.Timeview.objects.all()
+        objects = self.Timeview.objects.all("zoom_video")
         return render(request, 'home/dashboard.html', {'objects':objects} )
         
     def post(self, request, *args, **kwargs):
