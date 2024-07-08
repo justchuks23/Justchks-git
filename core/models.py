@@ -49,15 +49,7 @@ class ZoomVideoCredential(models.Model):
 
     def __str__(self):
         return f"{self.user}"
-
-class TimeModel(models.Model):
-    name =models.CharField(max_length=100)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def _str_(self):
-        return self.name
-    
+  
     
 class ZoomYouTubeFile(models.Model):
     user = models.ForeignKey(UserCredential, on_delete=models.CASCADE, related_name='credential_zoom', null=True)
@@ -70,6 +62,10 @@ class ZoomYouTubeFile(models.Model):
     appending_youtube_link_status = models.BooleanField(default=False, verbose_name='Appending status')
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
+    name =models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 
     class Meta:
         ordering = ["-date_created"]
@@ -80,6 +76,9 @@ class ZoomYouTubeFile(models.Model):
 
     def get_absolute_url(self):
         return reverse('main:detail', args=[self.slug])
+    
+    def _str_(self):
+        return self.name
 
     def save(self, *args, **kwargs):
         if not self.slug:

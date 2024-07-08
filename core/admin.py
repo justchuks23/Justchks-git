@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserCredential, ZoomVideoCredential, TimeModel, ZoomYouTubeFile
+from .models import UserCredential, ZoomVideoCredential, ZoomYouTubeFile
 
 
 # Register your models here.
@@ -15,12 +15,6 @@ class UserCredentialAdmin(admin.ModelAdmin):
 @admin.register(ZoomVideoCredential)
 class ZoomVideoCredentialAdmin(admin.ModelAdmin):
     list_display = ['user', 'min_duration', 'from_day_delta', 'page_size']
-
-
-@admin.register(TimeModel)
-class MyModelAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_at', 'updated_at')
-
 
 
 @admin.register(ZoomYouTubeFile)

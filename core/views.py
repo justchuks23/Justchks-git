@@ -77,10 +77,6 @@ class GetZoomVideoView(LoginRequiredMixin, View):
     Timeview = TimeModel
     def get(self, request, *args, **kwargs):
         return redirect('main:home', self.kwargs.get('pk'))
-    
-    def time_viev(self, request):
-        objects = self.Timeview.objects.all("zoom_video")
-        return render(request, 'home/dashboard.html', {'objects':objects} )
         
     def post(self, request, *args, **kwargs):
         user_id = self.kwargs.get('pk')
