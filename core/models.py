@@ -66,7 +66,6 @@ class ZoomYouTubeFile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-
     class Meta:
         ordering = ["-date_created"]
         verbose_name_plural = "Zoom Youtube Files"
