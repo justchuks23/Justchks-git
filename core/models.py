@@ -67,6 +67,8 @@ class ZoomYouTubeFile(models.Model):
     youtube_video_file_url = models.URLField(verbose_name='YouTube video link', null=True, blank=True)
     youtube_link_status = models.BooleanField(default=False, verbose_name='YouTube link status')
     appending_youtube_link_status = models.BooleanField(default=False, verbose_name='Appending status')
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ["-date_created"]
