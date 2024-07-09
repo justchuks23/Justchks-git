@@ -6,7 +6,6 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.shortcuts import redirect, get_object_or_404, render
-from .models import TimeModel
 from django.urls import reverse_lazy, reverse
 from django.views.generic import View, ListView, DetailView, FormView
 from django.views.generic.detail import SingleObjectMixin
