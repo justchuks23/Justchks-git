@@ -76,9 +76,6 @@ class ZoomYouTubeFile(models.Model):
 
     def get_absolute_url(self):
         return reverse('main:detail', args=[self.slug])
-    
-    def _str_(self):
-        return self.name
 
     def save(self, *args, **kwargs):
         if not self.slug:
