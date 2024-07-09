@@ -3,6 +3,7 @@ from django.contrib.auth.models import Group
 from django.urls import reverse
 from django.utils.text import slugify
 from django.contrib.auth import get_user_model
+import time
 
 
 # Create your models here.
@@ -48,8 +49,8 @@ class ZoomVideoCredential(models.Model):
 
     def __str__(self):
         return f"{self.user}"
-
-
+  
+    
 class ZoomYouTubeFile(models.Model):
     user = models.ForeignKey(UserCredential, on_delete=models.CASCADE, related_name='credential_zoom', null=True)
     zoom_id = models.CharField(max_length=256, null=True, blank=True, unique=True)
@@ -61,6 +62,9 @@ class ZoomYouTubeFile(models.Model):
     appending_youtube_link_status = models.BooleanField(default=False, verbose_name='Appending status')
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
+    name =models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ["-date_created"]
