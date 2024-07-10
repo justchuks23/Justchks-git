@@ -9,7 +9,7 @@ class AdminLoginForm(AuthenticationForm):
 
 class ZoomYoutubeUploadForm(forms.Form):
     zoom_id = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
         label='Zoom ID'
     )
 
