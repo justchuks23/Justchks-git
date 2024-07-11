@@ -1,0 +1,13 @@
+{% extends "base/home-base.html" %}
+
+{% block form_field %}
+    {% if field.field.widget.input_type == 'password' %}
+        {{ field.label_tag }}
+        {{ form[field.name] | as_password }}
+        {% if field.help_text %}
+            <br><small>{{ field.help_text }}</small>
+        {% endif %}
+    {% else %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %}
