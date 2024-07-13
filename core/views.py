@@ -12,12 +12,13 @@ from django.views.generic import View, ListView, DetailView, FormView
 from django.views.generic.detail import SingleObjectMixin
 
 from .cron import run_user_zoom_downloader
+import logging
 from .forms import AdminLoginForm, ZoomYoutubeUploadForm, UploadYoutubeForm
 from .models import UserCredential, ZoomYouTubeFile, ZoomVideoCredential
 from .tasks import upload_to_youtube_from_dir
 
 from src.get_google_refresh_token import get_token
-
+logger = logging.getLogger(__name__)
 # Create your views here.
 
 
@@ -111,7 +112,7 @@ class ZoomVideoDisplayView(LoginRequiredMixin, DetailView):
     model = ZoomYouTubeFile
     template_name = 'home/details.html'
     context_object_name = 'zoom_video'
-
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
@@ -132,6 +133,7 @@ class ZoomVideoFormView(SingleObjectMixin, FormView):
     model = ZoomYouTubeFile
     template_name = 'forms/zoom-form.html'
     context_object_name = 'zoom_video'
+    success_url = reverse_lazy("main:detail")
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -141,6 +143,23 @@ class ZoomVideoFormView(SingleObjectMixin, FormView):
         kwargs = super().get_form_kwargs()
         kwargs.pop('instance', None)
         return kwargs
+   
+    def form_valid(self, form):
+            zoom_client_id = form.cleaned_data['zoom_client_id']
+            zoom_client_secret = form.cleaned_data['zoom_client_secret']
+            zoom_account_id = form.cleaned_data['zoom_account_id']
+            google_client_id = form.cleaned_data['google_client_id']
+            google_client_secret = form.cleaned_data['google_client_secret']
+            google_account_id = form.cleaned_data['google_account_id']
+
+            logger.debug(f"Zoom Client ID: {zoom_client_id}")
+            logger.debug(f"Zoom Client Secret: {zoom_client_secret}")
+            logger.debug(f"Zoom Account ID: {zoom_account_id}")
+            logger.debug(f"Google Client ID: {google_client_id}")
+            logger.debug(f"Google Client Secret: {google_client_secret}")
+            logger.debug(f"Google Account ID: {google_account_id}")
+
+            return super().form_valid(form)    
 
     def form_valid(self, form):
         zoom_video = self.object
