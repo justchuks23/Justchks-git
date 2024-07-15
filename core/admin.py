@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import UserCredential, ZoomVideoCredential, ZoomYouTubeFile
 
-
 # Register your models here.
 
 

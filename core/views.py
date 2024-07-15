@@ -145,20 +145,7 @@ class ZoomVideoFormView(SingleObjectMixin, FormView):
         return kwargs
    
     def form_valid(self, form):
-            zoom_client_id = form.cleaned_data['zoom_client_id']
-            zoom_client_secret = form.cleaned_data['zoom_client_secret']
-            zoom_account_id = form.cleaned_data['zoom_account_id']
-            google_client_id = form.cleaned_data['google_client_id']
-            google_client_secret = form.cleaned_data['google_client_secret']
-            google_account_id = form.cleaned_data['google_account_id']
-
-            logger.debug(f"Zoom Client ID: {zoom_client_id}")
-            logger.debug(f"Zoom Client Secret: {zoom_client_secret}")
-            logger.debug(f"Zoom Account ID: {zoom_account_id}")
-            logger.debug(f"Google Client ID: {google_client_id}")
-            logger.debug(f"Google Client Secret: {google_client_secret}")
-            logger.debug(f"Google Account ID: {google_account_id}")
-
+            form.save()
             return super().form_valid(form)    
 
     def form_valid(self, form):
