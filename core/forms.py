@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
-
+from .models import UserCredential
 
 class AdminLoginForm(AuthenticationForm):
     username = forms.CharField()
@@ -13,6 +13,15 @@ class ZoomYoutubeUploadForm(forms.Form):
         label='Zoom ID'
     )
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'password-input'}))
+
+class UserCrendentialFileForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(UserCrendentialFileForm, self).__init__(args, **kwargs)
+        self.fields['zoom_client_id', 'zoom_client_secret']
+
+    class Meta: 
+        model = UserCredential
+        exclude = ('slug',)
 
 class UploadYoutubeForm(forms.Form):
     user_id = forms.IntegerField()
