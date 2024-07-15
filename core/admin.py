@@ -17,6 +17,7 @@ class ZoomVideoCredentialAdmin(admin.ModelAdmin):
     list_display = ['user', 'min_duration', 'from_day_delta', 'page_size']
 
 
+@admin.register(ZoomYouTubeFile)
 class ZoomYouTubeFileAdmin(admin.ModelAdmin):
     list_display = ['user', 'zoom_id', 'slug', 'zoom_name', 'zoom_video_file_url',
                     'youtube_video_file_url', 'youtube_link_status', 'appending_youtube_link_status',
