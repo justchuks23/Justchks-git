@@ -7,7 +7,7 @@ class AdminLoginForm(AuthenticationForm):
     password = forms.CharField(widget=forms.PasswordInput)
 
 class UserCrendentialAdminForm(forms.ModelForm):
-    username = forms.CharField()
+    User_credentials = forms.CharField()
     
     class Meta: 
         model = UserCredential
