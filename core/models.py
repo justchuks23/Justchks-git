@@ -40,6 +40,14 @@ class UserCredential(models.Model):
         return reverse('main:home', args=[self.user.id])
 
 
+class TimeModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True  
+
+
 class ZoomVideoCredential(models.Model):
     user = models.ForeignKey(UserCredential, on_delete=models.CASCADE, related_name='credential_get_zoom', null=True)
     min_duration = models.IntegerField(default=10, null=True, blank=True)
