@@ -133,7 +133,6 @@ class ZoomVideoFormView(SingleObjectMixin, FormView):
     model = ZoomYouTubeFile
     template_name = 'forms/zoom-form.html'
     context_object_name = 'zoom_video'
-    success_url = reverse_lazy("main:detail")
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -143,10 +142,7 @@ class ZoomVideoFormView(SingleObjectMixin, FormView):
         kwargs = super().get_form_kwargs()
         kwargs.pop('instance', None)
         return kwargs
-   
-    def form_valid(self, form):
-            form.save()
-            return super().form_valid(form)    
+      
 
     def form_valid(self, form):
         zoom_video = self.object
