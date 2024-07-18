@@ -12,12 +12,13 @@ from django.views.generic import View, ListView, DetailView, FormView
 from django.views.generic.detail import SingleObjectMixin
 
 from .cron import run_user_zoom_downloader
+import logging
 from .forms import AdminLoginForm, ZoomYoutubeUploadForm, UploadYoutubeForm
 from .models import UserCredential, ZoomYouTubeFile, ZoomVideoCredential
 from .tasks import upload_to_youtube_from_dir
 
 from src.get_google_refresh_token import get_token
-
+logger = logging.getLogger(__name__)
 # Create your views here.
 
 
@@ -111,7 +112,7 @@ class ZoomVideoDisplayView(LoginRequiredMixin, DetailView):
     model = ZoomYouTubeFile
     template_name = 'home/details.html'
     context_object_name = 'zoom_video'
-
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
@@ -141,6 +142,7 @@ class ZoomVideoFormView(SingleObjectMixin, FormView):
         kwargs = super().get_form_kwargs()
         kwargs.pop('instance', None)
         return kwargs
+      
 
     def form_valid(self, form):
         zoom_video = self.object
