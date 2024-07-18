@@ -11,7 +11,7 @@ class UserCrendentialAdminForm(forms.ModelForm):
     )
     zoom_client_id = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'})
     )
-    zoom_client_secret = forms.CharField(widget=forms.PasswordInput(attrs={'clas': 'control'})
+    zoom_client_secret = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'control'})
     )
     zoom_account_id = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'})
     )
