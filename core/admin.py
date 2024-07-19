@@ -7,9 +7,6 @@ from .forms import UserCrendentialAdminForm
 @admin.register(UserCredential)
 class UserCredentialAdmin(admin.ModelAdmin):
     form = UserCrendentialAdminForm
-    list_display = ['user', 'zoom_email', 'zoom_client_id', 'zoom_client_secret',
-                    'zoom_account_id', 'google_email', 'google_client_id', 'google_client_secret',
-                    'google_code', 'google_refresh_token']
 
 
 @admin.register(ZoomVideoCredential)
