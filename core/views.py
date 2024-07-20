@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import TimeModel
 from django.contrib.auth.views import LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.shortcuts import redirect, get_object_or_404, render
 from django.urls import reverse_lazy, reverse
@@ -11,12 +12,13 @@ from django.views.generic import View, ListView, DetailView, FormView
 from django.views.generic.detail import SingleObjectMixin
 
 from .cron import run_user_zoom_downloader
+import logging
 from .forms import AdminLoginForm, ZoomYoutubeUploadForm, UploadYoutubeForm
 from .models import UserCredential, ZoomYouTubeFile, ZoomVideoCredential
 from .tasks import upload_to_youtube_from_dir
 
 from src.get_google_refresh_token import get_token
-
+logger = logging.getLogger(__name__)
 # Create your views here.
 
 
@@ -73,10 +75,10 @@ class ZoomVideoListView(LoginRequiredMixin, ListView):
 
 
 class GetZoomVideoView(LoginRequiredMixin, View):
-
+    Timeview = TimeModel
     def get(self, request, *args, **kwargs):
         return redirect('main:home', self.kwargs.get('pk'))
-
+        
     def post(self, request, *args, **kwargs):
         user_id = self.kwargs.get('pk')
         try:
@@ -110,7 +112,7 @@ class ZoomVideoDisplayView(LoginRequiredMixin, DetailView):
     model = ZoomYouTubeFile
     template_name = 'home/details.html'
     context_object_name = 'zoom_video'
-
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
@@ -140,6 +142,7 @@ class ZoomVideoFormView(SingleObjectMixin, FormView):
         kwargs = super().get_form_kwargs()
         kwargs.pop('instance', None)
         return kwargs
+      
 
     def form_valid(self, form):
         zoom_video = self.object

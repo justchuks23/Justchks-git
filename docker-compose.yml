@@ -2,36 +2,23 @@ version: "3.11"
 services:
   db:
     image: mysql:latest
-    container_name: new-mysql
-    restart: 'unless-stopped'
+    container_name: db
+    restart: 'always'
     volumes:
       - mydata:/var/lib/mysql
-    ports:
-      - "3303:3306"    
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "mysql", "-u", "root", "-padmin"] 
-      timeout: 20s
-      retries: 10
     environment: 
       MYSQL_ROOT_PASSWORD: root_password@mysql
-      MYSQL_DATABASE: mydjango-database
-      MYSQL_USER: root
-      
-   
-  backend:
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    container_name: app_backend
-    volumes:
-      - .:/app
+      MYSQL_DATABASE: new-mysql
+      MYSQL_PASSWORD: root_password@mysql
     ports:
-      - "5000:80"
-    env_file:
-      - .env
-    depends_on:
-      - db       
-
+      - "8086:3306"    
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "db", "-u", "root", "-proot_password@mysql"] 
+      timeout: 20s
+      retries: 10
+      interval: 10s
+    
+      
   # Redis
   redis-james-django-chukwu:
     image: redis:alpine
@@ -44,19 +31,23 @@ services:
   # myApp
   cron-z2y-django:
     build: ./
-    image: $Z2Y_IMAGE
+    #image: $Z2Y_IMAGE
     container_name: cron-z2y-django
     volumes:
       - mydata:/app/data
       - static:/app/staticfiles
       - media:/app/media
     ports:
-      - "5000:80"
+      - "8087:80"
+    
+    depends_on:
+      db: 
+        condition: service_healthy   
     #env_file:
      # - .env
     #environment:
      # - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
-      #- DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
+      #- DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL
       #- DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
 
   # Celery

@@ -1,15 +1,15 @@
-FROM ubuntu:latest
+FROM ubuntu:22.04
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update &&\
-    apt-get install -y apt-utils vim curl apache2 apache2-utils python3 libapache2-mod-wsgi-py3 &&\
-    apt install -y libgl1-mesa-glx libglib2.0-0 build-essential python3-dev
+    apt-get install -y apt-utils vim curl default-libmysqlclient-dev pkg-config apache2 apache2-utils python3 libapache2-mod-wsgi-py3 
+
+RUN apt-get update && apt-get install -y software-properties-common &&\
+    add-apt-repository main &&\
+    apt-get install -y libgl1-mesa-glx libglib2.0-0 build-essential python3-dev
 
 # Install pip
 RUN apt-get update && apt-get install -y python3-pip
-
-RUN apt-get update &&\
-    apt-get install -y pkg-config && apt-get install -y mysql-client default-libmysqlclient-dev
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
@@ -45,13 +45,9 @@ COPY ./site_conf.conf /etc/apache2/sites-available/000-default.conf
 #RUN pip3 install --no-cache-dir -r requirements.txt
 
 RUN pip install --upgrade pip &&\
-    pip install -r ./requirements.txt --no-cache && \
-    python manage.py makemigrations && \
-    python manage.py migrate && \
-    python manage.py collectstatic --no-input
+    pip install -r ./requirements.txt --no-cache 
 
 RUN chown -R www-data:www-data .
-RUN chmod 664 db.sqlite3
 RUN chmod -R 755 .
 #RUN cd .. && chmod -R 777 var/
 

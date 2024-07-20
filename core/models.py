@@ -38,6 +38,14 @@ class UserCredential(models.Model):
 
     def get_absolute_url(self):
         return reverse('main:home', args=[self.user.id])
+    
+
+class TimeModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True  
 
 
 class TimeModel(models.Model):

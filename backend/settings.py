@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY', cast=str)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['zoomvideoautomation.bincom.net', '40.117.178.47',"localhost"]  # added domain name and ip adress
+ALLOWED_HOSTS = ['zoomvideoautomation.bincom.net', '40.117.178.47',"localhost", "uplo.ad" ]  # added domain name and ip adress
 
 
 # Application definition
@@ -120,8 +120,8 @@ DATABASES = {
          'NAME': 'new-mysql',
          'USER': 'root',
          'PASSWORD': 'root_password@mysql',
-         'HOST': 'localhost',
-         'PORT': '3303',
+         'HOST': 'db',
+         'PORT': 3306,
     }
 }
 

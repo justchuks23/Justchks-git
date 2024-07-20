@@ -30,6 +30,11 @@
                 </div>
             {% endif %}
 
+            {% for obj in objects %}
+                <p>{{ obj.name }} - Created at: {{ obj.created_at }} - Updated at: {{ obj.updated_at }}</p>
+            {% endfor %}
+
+
             {% for file in zoom_files %}
 
             <div class="row mb-2">
