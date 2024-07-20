@@ -35,7 +35,6 @@ class UserCrendentialAdminForm(forms.ModelForm):
                 'google_code', 'google_refresh_token']
 
 
-
 class ZoomYoutubeUploadForm(forms.Form):
     zoom_id = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
