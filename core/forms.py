@@ -7,8 +7,6 @@ class AdminLoginForm(AuthenticationForm):
     password = forms.CharField(widget=forms.PasswordInput)
 
 class UserCrendentialAdminForm(forms.ModelForm):
-    user = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'})
-    )
     zoom_email = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'})
     )
     zoom_client_id = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'})
