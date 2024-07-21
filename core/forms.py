@@ -26,6 +26,7 @@ class UserCrendentialAdminForm(forms.ModelForm):
     )
     google_refresh_token = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'})  
     )
+
     class Meta:
         model = UserCredential
         fields=['zoom_email','zoom_client_id', 'zoom_client_secret',

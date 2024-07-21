@@ -8,7 +8,7 @@ from .forms import UserCrendentialAdminForm
 @admin.register(UserCredential)
 class UserCredentialAdmin(admin.ModelAdmin):
     form = UserCrendentialAdminForm
-    
+    list_display = ['user']
 
 @admin.register(ZoomVideoCredential)
 class ZoomVideoCredentialAdmin(admin.ModelAdmin):
