@@ -1,13 +1,14 @@
 from django.contrib import admin
 from .models import UserCredential, ZoomVideoCredential, ZoomYouTubeFile
 from .forms import UserCrendentialAdminForm
+
 # Register your models here.
 
 
 @admin.register(UserCredential)
 class UserCredentialAdmin(admin.ModelAdmin):
     form = UserCrendentialAdminForm
-
+ 
 
 @admin.register(ZoomVideoCredential)
 class ZoomVideoCredentialAdmin(admin.ModelAdmin):
