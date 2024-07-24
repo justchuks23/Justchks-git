@@ -9,6 +9,17 @@ from django.contrib.auth import get_user_model
 
 CustomUser = get_user_model()
 
+def generate_unique_slug(instance, value, slug_field_name='slug'):
+    slug = slugify(value)
+    unique_slug = slug
+    num = 1
+
+    ModelClass = instance.__class__
+    while ModelClass.objects.filter(**{slug_field_name: unique_slug}).exists():
+        unique_slug = f"{slug}-{num}"
+        num += 1
+
+    return unique_slug
 
 class UserCredential(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='credentials', null=True)
