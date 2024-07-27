@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import Group
 from django.urls import reverse
+
 from django.utils.text import slugify
+import uuid
 from django.contrib.auth import get_user_model
 
 
@@ -9,17 +11,6 @@ from django.contrib.auth import get_user_model
 
 CustomUser = get_user_model()
 
-def generate_unique_slug(instance, value, slug_field_name='slug'):
-    slug = slugify(value)
-    unique_slug = slug
-    num = 1
-
-    ModelClass = instance.__class__
-    while ModelClass.objects.filter(**{slug_field_name: unique_slug}).exists():
-        unique_slug = f"{slug}-{num}"
-        num += 1
-
-    return unique_slug
 
 class UserCredential(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='credentials', null=True)
@@ -76,6 +67,14 @@ class ZoomVideoCredential(models.Model):
     def __str__(self):
         return f"{self.user}"
 
+def generate_unique_slug(filename):
+        base_slug = slugify(filename)
+        slug = base_slug
+        counter = 1 
+        while ZoomYouTubeFile.objects.filter(slug=slug).exist():
+            slug = f"{base_slug}--{uuid.uuid4().hex[:8]}"
+            counter += 1
+        return slug
 
 class ZoomYouTubeFile(models.Model):
     user = models.ForeignKey(UserCredential, on_delete=models.CASCADE, related_name='credential_zoom', null=True)
@@ -103,3 +102,4 @@ class ZoomYouTubeFile(models.Model):
         if not self.slug:
             self.slug = slugify(self.zoom_id)
         super().save(*args, **kwargs)
+    
