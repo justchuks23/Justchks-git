@@ -100,6 +100,6 @@ class ZoomYouTubeFile(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.zoom_id)
+            self.slug = generate_unique_slug(self.zoom_id)
         super().save(*args, **kwargs)
     
