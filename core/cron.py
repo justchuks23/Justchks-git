@@ -28,17 +28,20 @@ def run_user_zoom_downloader(official_data):
         from_day_delta = official_data['from_day_delta']
         page_size = official_data['page_size']
 
+        logger.info(f"Retrieving custom user for: {user}")
         custom_user = UserCredential.objects.get(user=user)
-        print(f"custom_user: {custom_user}")
+        logger.info(f"Retrieved custom_user: {custom_user}")
 
         # generating the zoom_client
+        logger.info("Generating Zoom client...")
         zoom_client = ZoomJWTClient(
             zoom_client_id,
             zoom_client_secret,
             zoom_account_id,
             86400
         )
-
+        logger.info("Zoom client generated successfully.")
+        
         for email in zoom_email.split(','):
             logger.info(f"Using email : {email}")
 
@@ -57,9 +60,13 @@ def run_user_zoom_downloader(official_data):
                 settings.MEDIA_ROOT,
                 settings.DOWNLOADED_FILES
             )
-
+            logger.info(f"Meetings downloaded for email: {email}")
+        
         logger.info('End.')
         print('End')
+    
+    except UserCredential.DoesNotExist as e:
+        logger.error(f"User credentials not found for user: {user}")
     except Exception as e:
         logger.exception(f"Error in the run_user_zoom_downloader: {e}")
 
