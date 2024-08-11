@@ -1,65 +1,63 @@
 FROM ubuntu:22.04
 ENV PYTHONUNBUFFERED 1
 
-# Install basic utilities and dependencies
 RUN apt-get update &&\
-    apt-get install -y \
-        apt-utils \
-        vim \
-        curl \
-        default-libmysqlclient-dev \
-        pkg-config \
-        apache2 \
-        apache2-utils \
-        python3 \
-        libapache2-mod-wsgi-py3 \
-        software-properties-common \
-        libgl1-mesa-glx \
-        libglib2.0-0 \
-        build-essential \
-        python3-dev \
-        python3-pip \
-        cron \
-        sqlite3 &&\
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y apt-utils vim curl default-libmysqlclient-dev pkg-config apache2 apache2-utils python3 libapache2-mod-wsgi-py3 
+
+RUN apt-get update && apt-get install -y software-properties-common &&\
+    add-apt-repository main &&\
+    apt-get install -y libgl1-mesa-glx libglib2.0-0 build-essential python3-dev
 
 # Install pip
-RUN ln -sf /usr/bin/python3 /usr/bin/python &&\
-    ln -sf /usr/bin/pip3 /usr/bin/pip
+RUN apt-get update && apt-get install -y python3-pip
 
-# Copy and install Python dependencies
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# Copy application code
 COPY . .
 
-# Set permissions and create directories
-RUN chown -R :www-data var &&\
-    mkdir -p /cron &&\
-    touch /cron/cron.log &&\
-    chmod -R 777 var/ &&\
-    chmod -R 755 django_app &&\
-    chown -R www-data:www-data /cron &&\
-    chmod -R 755 /cron
+RUN ln /usr/bin/python3 /usr/bin/python
+RUN apt-get -y install python3-pip
+RUN ln -sf /usr/bin/pip3 /usr/bin/pip 
+
+
+RUN apt-get update && apt-get install -y cron sqlite3 && rm -rf /var/lib/apt/lists/*
+
+
+ENV PYTHONUNBUFFERED 1
+RUN chown -R :www-data var
+RUN mkdir django_app
+RUN chmod -R 777 var/
+
+RUN chmod -R 755 django_app
+RUN touch /cron/cron.log
+
+RUN chown -R www-data:www-data cron/
+RUN chmod -R 755 cron/
 
 WORKDIR /django_app
 
-# Add Apache configuration
+ADD . .
+
 COPY ./site_conf.conf /etc/apache2/sites-available/000-default.conf
+#COPY ./media /app/media
 
-# Install and upgrade pip
+#RUN pip3 install --no-cache-dir -r requirements.txt
+
 RUN pip install --upgrade pip &&\
-    pip install -r requirements.txt --no-cache
+    pip install -r ./requirements.txt --no-cache 
 
-# Set ownership and permissions for the working directory
-RUN chown -R www-data:www-data . &&\
-    chmod -R 755 .
+RUN chown -R www-data:www-data .
+RUN chmod -R 755 .
+#RUN cd .. && chmod -R 777 var/
 
-# Make entrypoint script executable
+
+# django-crontab logfile
+
 RUN chmod +x entrypoint.sh
-
 EXPOSE 5000
 
-# Use entrypoint script
+    
 CMD ["./entrypoint.sh"]
+
+#CMD ["sh", "-c", "python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:5000 && tail -f /cron/cron.log"]
