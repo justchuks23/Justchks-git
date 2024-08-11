@@ -27,9 +27,13 @@ RUN apt-get update &&\
 RUN ln -sf /usr/bin/python3 /usr/bin/python &&\
     ln -sf /usr/bin/pip3 /usr/bin/pip
 
+# Set up the application directory
+WORKDIR /app
+
 # Copy and install Python dependencies
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip &&\
+    pip install -r requirements.txt --no-cache
 
 # Copy application code
 COPY . .
@@ -44,14 +48,8 @@ RUN mkdir -p /cron &&\
     chown -R www-data:www-data /cron &&\
     chmod -R 755 /cron
 
-WORKDIR /django_app
-
-# Add Apache configuration
+# Set Apache configuration
 COPY ./site_conf.conf /etc/apache2/sites-available/000-default.conf
-
-# Install and upgrade pip
-RUN pip install --upgrade pip &&\
-    pip install -r requirements.txt --no-cache
 
 # Set ownership and permissions for the working directory
 RUN chown -R www-data:www-data . &&\
