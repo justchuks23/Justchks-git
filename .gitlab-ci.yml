@@ -38,6 +38,7 @@ build:
         expire_in: "4 hrs"
         paths:
             - zoom_youtube_integration.tar 
+            - site_conf.conf
     #only:
       #- master
       #- merge_requests
