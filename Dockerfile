@@ -27,7 +27,8 @@ RUN apt-get update && \
 
 COPY requirements.txt .
 
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt --no-cache
 
 COPY . .
 
@@ -60,9 +61,6 @@ WORKDIR /django_app
 COPY site_conf.conf .
 RUN chown www-data:www-data site_conf.conf
 RUN chmod 755 site_conf.conf
-
-RUN pip install --upgrade pip && \
-    pip install -r ./requirements.txt --no-cache
 
 RUN chown -R www-data:www-data .
 RUN chmod -R 755 .
