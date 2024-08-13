@@ -58,14 +58,15 @@ RUN chmod -R 755 cron/
 
 WORKDIR /django_app
 
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
 COPY site_conf.conf .
 RUN chown www-data:www-data site_conf.conf
 RUN chmod 755 site_conf.conf
 
 RUN chown -R www-data:www-data .
 RUN chmod -R 755 .
-
-RUN chmod +x entrypoint.sh
 
 EXPOSE 5000
 
