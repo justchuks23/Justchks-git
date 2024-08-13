@@ -7,7 +7,7 @@ from urllib.parse import urljoin
 import requests
 
 from .server_oauth import make_http_headers, generate_jwt_token, generate_access_token, make_jwt_payload
-from core.models import generate_unique_slug
+
 from core.models import ZoomYouTubeFile, UserCredential
 
 """
@@ -170,7 +170,6 @@ class ZoomRecording(object):
     # this saves the downloaded zoom video files to database
 
     def _save_to_db(self, user, downloaded_files, recording_id, video_url, filename):
-        unique_slug = generate_unique_slug(filename)
         with open(downloaded_files, 'a+') as zoom_video_files:
             zoom_video_files.write('{}\n'.format(recording_id))
 
@@ -178,8 +177,7 @@ class ZoomRecording(object):
         zoom_download_url_database = ZoomYouTubeFile.objects.create(
             user=user,
             zoom_id=recording_id, zoom_video_file_url=video_url,
-            zoom_name=filename,
-            slug = unique_slug
+            zoom_name=filename
         )
         zoom_download_url_database.save()
 

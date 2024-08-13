@@ -29,7 +29,7 @@ class UserCrendentialAdminForm(forms.ModelForm):
 
     class Meta:
         model = UserCredential
-        fields=['user', 'zoom_email', 'zoom_client_id', 'zoom_client_secret',
+        fields=['user', 'zoom_email','zoom_client_id', 'zoom_client_secret',
                 'zoom_account_id', 'google_email', 'google_client_id', 'google_client_secret',
                 'google_code', 'google_refresh_token']
 

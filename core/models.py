@@ -59,14 +59,6 @@ class ZoomVideoCredential(models.Model):
     def __str__(self):
         return f"{self.user}"
 
-def generate_unique_slug(filename):
-        base_slug = slugify(filename)
-        slug = base_slug
-        counter = 1 
-        while ZoomYouTubeFile.objects.filter(slug=slug).exist():
-            slug = f"{base_slug}--{uuid.uuid4().hex[:8]}"
-            counter += 1
-        return slug
 
 class ZoomYouTubeFile(models.Model):
     user = models.ForeignKey(UserCredential, on_delete=models.CASCADE, related_name='credential_zoom', null=True)
@@ -92,6 +84,6 @@ class ZoomYouTubeFile(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = generate_unique_slug(self.zoom_id)
+            self.slug = slugify(self.zoom_id)
         super().save(*args, **kwargs)
     
