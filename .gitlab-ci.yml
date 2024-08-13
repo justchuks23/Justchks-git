@@ -30,6 +30,7 @@ build:
         - ./scripts/before_script.sh
     script:
         - chmod u+x scripts/build_script.sh
+        - ls
         - ./scripts/build_script.sh
         #- chmod u+x .env 
         - if [ -f ".env" ]; then echo ".env exists in the artifact."; else echo ".env does not exist in the artifact."; fi
