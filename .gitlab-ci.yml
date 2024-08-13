@@ -31,8 +31,6 @@ build:
     script:
         - chmod u+x scripts/build_script.sh
         - ./scripts/build_script.sh
-        - echo "Listing files in build context:"
-        - ls -la
         #- chmod u+x .env 
         - if [ -f ".env" ]; then echo ".env exists in the artifact."; else echo ".env does not exist in the artifact."; fi
     
