@@ -26,7 +26,7 @@ RUN chown -R www-data:www-data cron/
 RUN chmod -R 755 cron/
 WORKDIR /django_app
 ADD . .
-COPY ./site_conf.conf /etc/apache2/sites-available/000-default.conf
+COPY../site_conf.conf /etc/apache2/sites-available/000-default.conf
 #COPY ./media /app/media
 #RUN pip3 install --no-cache-dir -r requirements.txt
 RUN pip install --upgrade pip &&\
