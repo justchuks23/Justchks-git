@@ -59,7 +59,10 @@ RUN chmod -R 755 cron/
 WORKDIR /django_app
 
 COPY entrypoint.sh .
-RUN chmod +x entrypoint.sh
+#RUN chmod +x entrypoint.sh
+RUN chmod +x entrypoint.sh && \
+    ls -l entrypoint.sh && \
+    stat -c "%a %n" entrypoint.sh
 
 COPY site_conf.conf .
 RUN chown www-data:www-data site_conf.conf
@@ -70,4 +73,4 @@ RUN chmod -R 755 .
 
 EXPOSE 5000
 
-CMD ["./entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
