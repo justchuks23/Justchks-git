@@ -56,14 +56,13 @@ RUN touch /cron/cron.log
 RUN chown -R www-data:www-data cron/
 RUN chmod -R 755 cron/
 
+
 WORKDIR /django_app
-
 COPY entrypoint.sh .
-#RUN chmod +x entrypoint.sh
-RUN chmod +x entrypoint.sh && \
-    ls -l entrypoint.sh && \
-    stat -c "%a %n" entrypoint.sh
+COPY entrypoint.sh /django_app/
+RUN chmod +x /django_app/entrypoint.sh
 
+RUN chmod +x entrypoint.sh
 COPY site_conf.conf .
 RUN chown www-data:www-data site_conf.conf
 RUN chmod 755 site_conf.conf
