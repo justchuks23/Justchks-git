@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Source the .env file to export environment variables
-#!/bin/bash
+
 
 # Source the .env file to export environment variables
 if [ "$DJANGO_SUPERUSER_USERNAME" ]
