@@ -58,7 +58,7 @@ RUN chmod -R 755 cron/
 
 WORKDIR /django_app
 
-COPY entrypoint.sh 
+COPY entrypoint.sh .
 RUN chmod +x entrypoint.sh
 
 COPY site_conf.conf .
