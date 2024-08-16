@@ -14,6 +14,7 @@ RUN ln /usr/bin/python3 /usr/bin/python
 RUN apt-get -y install python3-pip
 RUN ln -sf /usr/bin/pip3 /usr/bin/pip
 RUN apt-get update && apt-get install -y cron sqlite3 && rm -rf /var/lib/apt/lists/*
+
 ENV PYTHONUNBUFFERED 1
 RUN chown -R :www-data var
 RUN mkdir django_app
