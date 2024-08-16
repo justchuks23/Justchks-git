@@ -2,7 +2,7 @@ version: "3.11"
 services:
   db:
     image: mysql:latest
-    container_name: dbb
+    container_name: db
     restart: 'always'
     volumes:
       - mydata:/var/lib/mysql
@@ -22,7 +22,7 @@ services:
   # Redis
   redis-james-django-chukwu:
     image: redis:alpine
-    container_name: rediss
+    container_name: redis
     ports:
       - "6379:6379"
     volumes:
