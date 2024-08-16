@@ -57,7 +57,7 @@ services:
     container_name: celery
     command: celery -A backend worker -l INFO
     depends_on:
-      - rediss-james-django-chukwu
+      - redis-james-django-chukwu
       - cron-z2y-django
     volumes:
       - mydata:/app/data
