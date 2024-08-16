@@ -2,7 +2,7 @@ version: "3.11"
 services:
   db:
     image: mysql:latest
-    container_name: db
+    container_name: dbb
     restart: 'always'
     volumes:
       - mydata:/var/lib/mysql
@@ -57,7 +57,7 @@ services:
     container_name: celery
     command: celery -A backend worker -l INFO
     depends_on:
-      - redis-james-django-chukwu
+      - rediss-james-django-chukwu
       - cron-z2y-django
     volumes:
       - mydata:/app/data
