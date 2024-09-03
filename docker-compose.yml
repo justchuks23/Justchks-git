@@ -11,7 +11,7 @@ services:
       MYSQL_DATABASE: new-mysql
       MYSQL_PASSWORD: root_password@mysql
     ports:
-      - "8087:3306"    
+      - "8086:3306"    
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "db", "-u", "root", "-proot_password@mysql"] 
       timeout: 20s
