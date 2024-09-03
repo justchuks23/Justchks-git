@@ -9,7 +9,7 @@ variables:
     SERVER_IP: 40.117.178.47
     SERVER_USER: james_chukwu
     SERVER_PASSWORD: james@123!
-    Z2Y_IMAGE: cron-z2y-django:$CI_COMMIT_SHORT_SHA
+    Z2Y_IMAGE: cron-z2y-django
     Z2Y_CONTAINER: cron-z2y-django
     SECRET_KEY: django-insecure-72-=h#)@y#a-7*h@od4+_e4oi89%!-e6d@0_4=9+&bqd=1x(vj
     #DEBUG: False
@@ -26,13 +26,12 @@ build:
     tags:
         - development
     before_script:
+        - ls -l
         - chmod u+x scripts/before_script.sh
         - ./scripts/before_script.sh
     script:
         - chmod u+x scripts/build_script.sh
         - ./scripts/build_script.sh
-        - echo "Listing files in build context:"
-        - ls -la
         #- chmod u+x .env 
         - if [ -f ".env" ]; then echo ".env exists in the artifact."; else echo ".env does not exist in the artifact."; fi
     
