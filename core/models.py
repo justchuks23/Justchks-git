@@ -83,7 +83,7 @@ class ZoomYouTubeFile(models.Model):
     class Meta:
         ordering = ["-date_created"]
         verbose_name_plural = "Zoom Youtube Files"
-
+            
     def __str__(self):
         return f'{self.zoom_id}'
 
