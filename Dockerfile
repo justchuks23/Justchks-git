@@ -46,30 +46,55 @@ RUN apt-get update && \
 ENV PYTHONUNBUFFERED 1
 
 RUN chown -R :www-data var
-
 RUN mkdir django_app
-RUN chmod -R 755 django_app
+RUN chmod -R 777 var/
 
-# Create the /cron directory
-RUN mkdir -p /cron
+RUN chmod -R 755 django_app
+RUN mkdir /cron
 RUN touch /cron/cron.log
+
 RUN chown -R www-data:www-data cron/
 RUN chmod -R 755 cron/
 
-
 WORKDIR /django_app
-COPY entrypoint.sh .
-COPY entrypoint.sh /django_app/
-RUN chmod +x /django_app/entrypoint.sh
 
-RUN chmod +x entrypoint.sh
-COPY site_conf.conf .
-RUN chown www-data:www-data site_conf.conf
-RUN chmod 755 site_conf.conf
+ADD . .
+
+COPY ./site_conf.conf /etc/apache2/sites-available/000-default.conf
+#COPY ./media /app/media
+
+#RUN pip3 install --no-cache-dir -r requirements.txt
+
+RUN pip install --upgrade pip &&\
+    pip install -r ./requirements.txt --no-cache && \
+    python manage.py makemigrations && \
+    python manage.py migrate && \
+    python manage.py collectstatic --no-input
 
 RUN chown -R www-data:www-data .
+RUN chmod 664 db.sqlite3
 RUN chmod -R 755 .
+#RUN cd .. && chmod -R 777 var/
+
+
+# django-crontab logfile
+
+
+# django-crontab logfile
+
+
+
+# django-crontab logfile
+
+
+# django-crontab logfile
+
+RUN chmod +x entrypoint.sh
+
+RUN chmod +x entrypoint.sh
+EXPOSE 5000
 
 EXPOSE 5000
 
-ENTRYPOINT ["./entrypoint.sh"]
+
+CMD ["./entrypoint.sh"]
