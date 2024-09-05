@@ -87,7 +87,5 @@ RUN chmod +x entrypoint.sh
 RUN chmod +x entrypoint.sh
 EXPOSE 5000
 
-EXPOSE 5000
-
 
 CMD ["./entrypoint.sh"]

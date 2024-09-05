@@ -3,7 +3,7 @@ from django.contrib.auth.models import Group
 from django.urls import reverse
 
 from django.utils.text import slugify
-import uuid
+
 from django.contrib.auth import get_user_model
 
 
