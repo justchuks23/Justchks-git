@@ -10,8 +10,13 @@ services:
       MYSQL_ROOT_PASSWORD: root_password@mysql
       MYSQL_DATABASE: new-mysql
       MYSQL_PASSWORD: root_password@mysql
+<<<<<<< HEAD
       MYSQL_USER: root
       MYSQL_HOST: db
+=======
+      MYSQL_HOST: db
+      MYSQL_USER: root
+>>>>>>> bee8d4a35d3e69a790e19a5531c3575ad86ee5b4
     ports:
       - "8080:3306"    
     healthcheck:

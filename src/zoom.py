@@ -172,13 +172,9 @@ class ZoomRecording(object):
     def _save_to_db(self, user, downloaded_files, recording_id, video_url, filename):
         with open(downloaded_files, 'a+') as zoom_video_files:
             zoom_video_files.write('{}\n'.format(recording_id))
-            for file in downloaded_files:
-                title = file['title']
-                unique_slug = generate_unique_slug(title)        
-
+            
         # this saves the video from local storage to database using the models
         zoom_download_url_database = ZoomYouTubeFile.objects.create(
-            title=title,
             user=user,
             zoom_id=recording_id, zoom_video_file_url=video_url,
             zoom_name=filename
