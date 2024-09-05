@@ -10,7 +10,6 @@ services:
       MYSQL_ROOT_PASSWORD: root_password@mysql
       MYSQL_DATABASE: new-mysql
       MYSQL_PASSWORD: root_password@mysql
-      MYSQL_HOST: db
       MYSQL_USER: root
     ports:
       - "8080:3306"    
