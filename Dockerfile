@@ -66,7 +66,6 @@ COPY ./site_conf.conf /etc/apache2/sites-available/000-default.conf
 #RUN pip3 install --no-cache-dir -r requirements.txt
 
 RUN chown -R www-data:www-data .
-RUN chmod 664 db.sqlite3
 RUN chmod -R 755 .
 #RUN cd .. && chmod -R 777 var/
 
