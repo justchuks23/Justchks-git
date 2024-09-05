@@ -38,7 +38,7 @@ services:
       - static:/app/staticfiles
       - media:/app/media
     ports:
-      - "8186:80"
+      - "8088:80"
     
     depends_on:
       db: 
