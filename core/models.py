@@ -50,14 +50,6 @@ class TimeModel(models.Model):
         abstract = True  
 
 
-class TimeModel(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        abstract = True  
-
-
 class ZoomVideoCredential(models.Model):
     user = models.ForeignKey(UserCredential, on_delete=models.CASCADE, related_name='credential_get_zoom', null=True)
     min_duration = models.IntegerField(default=10, null=True, blank=True)
@@ -67,6 +59,7 @@ class ZoomVideoCredential(models.Model):
     def __str__(self):
         return f"{self.user}"
 
+<<<<<<< HEAD
 def generate_unique_slug(title):
         original_slug = slugify(title)
         unique_slug = original_slug
@@ -75,6 +68,8 @@ def generate_unique_slug(title):
             unique_slug = f"{original_slug}-{num}"
             num += 1
         return unique_slug
+=======
+>>>>>>> b624ca7a61d16d45e721ef737cc498c39c2fc726
 
 class ZoomYouTubeFile(models.Model):
     user = models.ForeignKey(UserCredential, on_delete=models.CASCADE, related_name='credential_zoom', null=True)
@@ -91,7 +86,7 @@ class ZoomYouTubeFile(models.Model):
     class Meta:
         ordering = ["-date_created"]
         verbose_name_plural = "Zoom Youtube Files"
-
+            
     def __str__(self):
         return f'{self.zoom_id}'
 
@@ -100,6 +95,6 @@ class ZoomYouTubeFile(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = generate_unique_slug(self.zoom_id)
+            self.slug = slugify(self.zoom_id)
         super().save(*args, **kwargs)
     
