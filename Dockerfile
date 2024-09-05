@@ -28,7 +28,27 @@ RUN apt-get update && \
 COPY requirements.txt .
 
 RUN pip install --upgrade pip && \
-    pip install -r requirements.txt --no-cache
+tep 24/31 : COPY ./site_conf.conf /etc/apache2/sites-available/000-default.conf
+ ---> 4ac2ec5229b0
+Step 25/31 : RUN chown -R www-data:www-data .
+ ---> Running in 10b15cf8ddb7
+ ---> Removed intermediate container 10b15cf8ddb7
+ ---> 3c091c1f89b9
+Step 26/31 : RUN chmod 664 db.sqlite3
+ ---> Running in 825e2913e896
+chmod: cannot access 'db.sqlite3': No such file or directory
+The command '/bin/sh -c chmod 664 db.sqlite3' returned a non-zero code: 1
+ERROR: Service 'cron-z2y-django' failed to build : Build failedStep 24/31 : COPY ./site_conf.conf /etc/apache2/sites-available/000-default.conf
+ ---> 4ac2ec5229b0
+Step 25/31 : RUN chown -R www-data:www-data .
+ ---> Running in 10b15cf8ddb7
+ ---> Removed intermediate container 10b15cf8ddb7
+ ---> 3c091c1f89b9
+Step 26/31 : RUN chmod 664 db.sqlite3
+ ---> Running in 825e2913e896
+chmod: cannot access 'db.sqlite3': No such file or directory
+The command '/bin/sh -c chmod 664 db.sqlite3' returned a non-zero code: 1
+ERROR: Service 'cron-z2y-django' failed to build : Build failed
 
 COPY . .
 
@@ -66,7 +86,6 @@ COPY ./site_conf.conf /etc/apache2/sites-available/000-default.conf
 #RUN pip3 install --no-cache-dir -r requirements.txt
 
 RUN chown -R www-data:www-data .
-RUN chmod 664 db.sqlite3
 RUN chmod -R 755 .
 #RUN cd .. && chmod -R 777 var/
 
