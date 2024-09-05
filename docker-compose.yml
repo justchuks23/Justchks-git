@@ -11,7 +11,7 @@ services:
       MYSQL_DATABASE: new-mysql
       MYSQL_PASSWORD: root_password@mysql
     ports:
-      - "8082:3306"    
+      - "8081:3306"    
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "db", "-u", "root", "-proot_password@mysql"] 
       timeout: 20s
@@ -37,7 +37,7 @@ services:
       - static:/app/staticfiles
       - media:/app/media
     ports:
-      - "8081:80"
+      - "8085:80"
     depends_on:
       db: 
         condition: service_healthy   
