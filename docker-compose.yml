@@ -2,7 +2,7 @@ version: "2.2"
 services:
   db:
     image: mysql:latest
-    container_name: db
+    container_name: database
     restart: 'always'
     volumes:
       - mydata:/var/lib/mysql
@@ -22,7 +22,7 @@ services:
   # Redis
   redis-james-django-chukwu:
     image: redis:alpine
-    container_name: redis
+    container_name: redis_4_test
     ports:
       - "6379:6379"
     volumes:
@@ -32,7 +32,7 @@ services:
   cron-z2y-django:
     build: ./
     #image: $Z2Y_IMAGE
-    container_name: cron-z2y-django
+    container_name: cron-4-django
     volumes:
       - mydata:/app/data
       - static:/app/staticfiles
