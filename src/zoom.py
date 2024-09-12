@@ -65,7 +65,6 @@ class ZoomRecording(object):
 
         self.client = client
         self.email = email
-
         self.duration_min = duration_min
         self.filter_meeting_by_name = filter_meeting_by_name
         self.only_meeting_names = only_meeting_names or []
