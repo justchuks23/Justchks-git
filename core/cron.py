@@ -29,10 +29,13 @@ def run_user_zoom_downloader(official_data):
     page_size = official_data['page_size']
 
     logger.info(f"Retrieving custom user for: {user}")
+
+    # Get the custom user or raise an error if it doesn't exist
     custom_user = UserCredential.objects.get(user=user)
     logger.info(f"Retrieved custom_user: {custom_user}")
 
-        # generating the zoom_client
+    # generating the zoom_client
+
     logger.info("Generating Zoom client...")
     zoom_client = ZoomJWTClient(
         zoom_client_id,
@@ -41,7 +44,7 @@ def run_user_zoom_downloader(official_data):
         86400
     )
     logger.info("Zoom client generated successfully.")
-
+ 
     for email in zoom_email.split(','):
         logger.info(f"Using email : {email}")
 
@@ -61,10 +64,8 @@ def run_user_zoom_downloader(official_data):
             settings.DOWNLOADED_FILES
         )
         logger.info(f"Meetings downloaded for email: {email}")
-        
+
     logger.info('End.')
     print('End')
-    
-    
 
 
