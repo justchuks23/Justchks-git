@@ -100,7 +100,7 @@ class ZoomRecording(object):
             return
         """
         getting the recorded files (MP4) and storing in a variable (recorded_files),
-        for each meeting. A meeting can have MP4, MA4, TXT files
+        for each meeting. meetings can have MP4, MA4, TXT files
         """
         meetings = self.filter_meetings(meetings)
         for meeting in meetings:
