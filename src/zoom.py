@@ -130,10 +130,18 @@ class ZoomRecording(object):
 
                 self._real_download_file(download_url, save_path)
 
+                download_successful = True
                 print(f"Downloaded the file: {video_data.get('download_url')}")
 
                 self._save_to_db(user, downloaded_files, rid, download_url, filename)
+                
+            if download_successful:
+                print("Download completed successfully for one or more files in this meeting.")
+            else:
+                print("No new files were downloaded for this meeting.")
 
+        print("All downloads completed.")   
+    
     def _is_downloaded(self, downloaded_files, recording_id):
         if not os.path.exists(downloaded_files):
             return True

@@ -69,4 +69,3 @@ def run_user_zoom_downloader(official_data):
     
     
 
-
