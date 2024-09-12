@@ -128,11 +128,12 @@ class ZoomRecording(object):
                 download_url = video_data.get('download_url')
                 download_url += f"?access_token={self.client.access_token}"
 
-                self._real_download_file(download_url, save_path)
+                success = self._real_download_file(download_url, save_path)
 
-                print(f"Downloaded the file: {video_data.get('download_url')}")
-
-                self._save_to_db(user, downloaded_files, rid, download_url, filename)
+		if success:
+		    print(f"Downloaded the file successfully: {video_data.get('download_url'}")
+		else:
+	            print(f"failed to download the file: {video_data.get('download_url'}")
 
     def _is_downloaded(self, downloaded_files, recording_id):
         if not os.path.exists(downloaded_files):
