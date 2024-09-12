@@ -188,3 +188,4 @@ class ZoomRecording(object):
             zoom_name=filename
         )
         zoom_download_url_database.save()    
+        
