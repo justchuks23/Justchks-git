@@ -175,7 +175,7 @@ class ZoomRecording(object):
             return True
         return False
 
-    # this saves the downloaded zoom video files to database
+    # this saves the downloaded zoom video files to database.
 
     def _save_to_db(self, user, downloaded_files, recording_id, video_url, filename):
         with open(downloaded_files, 'a+') as zoom_video_files:
@@ -188,4 +188,3 @@ class ZoomRecording(object):
             zoom_name=filename
         )
         zoom_download_url_database.save()    
-        
