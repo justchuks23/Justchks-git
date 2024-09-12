@@ -39,7 +39,6 @@ services:
       - media:/app/media
     ports:
       - "8088:80"
-    
     depends_on:
       db: 
         condition: service_healthy   

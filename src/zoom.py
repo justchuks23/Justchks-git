@@ -187,6 +187,4 @@ class ZoomRecording(object):
             zoom_id=recording_id, zoom_video_file_url=video_url,
             zoom_name=filename
         )
-        zoom_download_url_database.save()
-
-    
+        zoom_download_url_database.save()    
