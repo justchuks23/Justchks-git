@@ -133,7 +133,6 @@ class ZoomRecording(object):
                 
                 self._save_to_db(user, downloaded_files, rid, download_url, filename)
 
-        print("All downloads completed.")   
     
     def _is_downloaded(self, downloaded_files, recording_id):
         if not os.path.exists(downloaded_files):
