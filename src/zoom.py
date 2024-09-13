@@ -4,6 +4,7 @@ from datetime import datetime
 from datetime import timedelta
 from urllib.parse import urljoin
 
+import logging
 import requests
 
 from .server_oauth import make_http_headers, generate_jwt_token, generate_access_token, make_jwt_payload
@@ -14,6 +15,10 @@ from core.models import ZoomYouTubeFile, UserCredential
 ZoomJWTClient class is used for authentication of the zoom credentials
 using the jwt_auth function parameters.
 """
+
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 
 class ZoomJWTClient(object):
@@ -159,12 +164,17 @@ class ZoomRecording(object):
         return os.path.join(save_dir, fname)
 
     def _real_download_file(self, url, fpath):
+        logger.info(f"Starting download from {url}...")
         response = requests.get(url, stream=True)
+
         if response.status_code == 200:
             with open(fpath.encode('utf-8'), 'wb') as f:
                 for chunk in response.iter_content(chunk_size=8192):
                     f.write(chunk)
+            logger.info(f"Successfully download file to {fpath}.")
             return True
+        else:
+            logger.error(f"failed to download file from {url}. ssttus code: {response.status_code}")
         return False
 
     # this saves the downloaded zoom video files to database.
