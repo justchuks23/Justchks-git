@@ -129,7 +129,6 @@ class ZoomRecording(object):
 
                 self._real_download_file(download_url, save_path)
 
-                
                 print(f"Downloaded the file: {video_data.get('download_url')}")
                 
                 self._save_to_db(user, downloaded_files, rid, download_url, filename)
