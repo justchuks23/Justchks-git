@@ -38,11 +38,7 @@ services:
       - static:/app/staticfiles
       - media:/app/media
     ports:
-<<<<<<< HEAD
-      - "8088:80"
-=======
       - "8083:80"
->>>>>>> 8aafd084a30ced69062363dd47871b8ce1f326ae
     depends_on:
       db: 
         condition: service_healthy   
