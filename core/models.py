@@ -3,10 +3,11 @@ from django.contrib.auth.models import Group
 from django.urls import reverse
 
 from django.utils.text import slugify
+
 from django.contrib.auth import get_user_model
 
 
-# Create your models here.
+# Create your models here
 
 CustomUser = get_user_model()
 

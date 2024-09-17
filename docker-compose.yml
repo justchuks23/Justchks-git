@@ -2,7 +2,7 @@ version: "2.2"
 services:
   db:
     image: mysql:latest
-    container_name: db
+    container_name: db_4_test
     restart: 'always'
     volumes:
       - mydata:/var/lib/mysql
@@ -10,8 +10,9 @@ services:
       MYSQL_ROOT_PASSWORD: root_password@mysql
       MYSQL_DATABASE: new-mysql
       MYSQL_PASSWORD: root_password@mysql
+      MYSQL_HOST: db
     ports:
-      - "8080:3306"    
+      - "8084:3306"    
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "db", "-u", "root", "-proot_password@mysql"] 
       timeout: 20s
@@ -21,7 +22,7 @@ services:
   # Redis
   redis-james-django-chukwu:
     image: redis:alpine
-    container_name: redis
+    container_name: redis_4_test
     ports:
       - "6379:6379"
     volumes:
@@ -31,21 +32,20 @@ services:
   cron-z2y-django:
     build: ./
     #image: $Z2Y_IMAGE
-    container_name: cron-z2y-django
+    container_name: cron-django-4-test
     volumes:
       - mydata:/app/data
       - static:/app/staticfiles
       - media:/app/media
     ports:
-      - "8088:80"
-    
+      - "8083:80"
     depends_on:
       db: 
         condition: service_healthy   
     #env_file:
-     # - .env
+      # - .env
     #environment:
-     # - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
+      #- DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
       #- DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL
       #- DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
 
@@ -53,7 +53,7 @@ services:
   celery:
     restart: always
     build: ./
-    container_name: celery
+    container_name: celery_4_test
     command: celery -A backend worker -l INFO
     depends_on:
       - redis-james-django-chukwu

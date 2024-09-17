@@ -65,14 +65,7 @@ COPY ./site_conf.conf /etc/apache2/sites-available/000-default.conf
 
 #RUN pip3 install --no-cache-dir -r requirements.txt
 
-RUN pip install --upgrade pip &&\
-    pip install -r ./requirements.txt --no-cache && \
-    python manage.py makemigrations && \
-    python manage.py migrate && \
-    python manage.py collectstatic --no-input
-
 RUN chown -R www-data:www-data .
-RUN chmod 664 db.sqlite3
 RUN chmod -R 755 .
 #RUN cd .. && chmod -R 777 var/
 
@@ -83,7 +76,6 @@ RUN chmod -R 755 .
 # django-crontab logfile
 
 
-
 # django-crontab logfile
 
 
@@ -92,8 +84,6 @@ RUN chmod -R 755 .
 RUN chmod +x entrypoint.sh
 
 RUN chmod +x entrypoint.sh
-EXPOSE 5000
-
 EXPOSE 5000
 
 

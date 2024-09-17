@@ -4,6 +4,7 @@ from datetime import datetime
 from datetime import timedelta
 from urllib.parse import urljoin
 
+import logging
 import requests
 
 from .server_oauth import make_http_headers, generate_jwt_token, generate_access_token, make_jwt_payload
@@ -14,6 +15,10 @@ from core.models import ZoomYouTubeFile, UserCredential
 ZoomJWTClient class is used for authentication of the zoom credentials
 using the jwt_auth function parameters.
 """
+
+# Set up logging.
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 
 class ZoomJWTClient(object):
@@ -65,7 +70,6 @@ class ZoomRecording(object):
 
         self.client = client
         self.email = email
-
         self.duration_min = duration_min
         self.filter_meeting_by_name = filter_meeting_by_name
         self.only_meeting_names = only_meeting_names or []
@@ -101,7 +105,7 @@ class ZoomRecording(object):
             return
         """
         getting the recorded files (MP4) and storing in a variable (recorded_files),
-        for each meeting. A meeting can have MP4, MA4, TXT files
+        for each meeting. meetings can have MP4, MA4, TXT files
         """
         meetings = self.filter_meetings(meetings)
         for meeting in meetings:
@@ -131,9 +135,10 @@ class ZoomRecording(object):
                 self._real_download_file(download_url, save_path)
 
                 print(f"Downloaded the file: {video_data.get('download_url')}")
-
+                
                 self._save_to_db(user, downloaded_files, rid, download_url, filename)
 
+    
     def _is_downloaded(self, downloaded_files, recording_id):
         if not os.path.exists(downloaded_files):
             return True
@@ -159,12 +164,17 @@ class ZoomRecording(object):
         return os.path.join(save_dir, fname)
 
     def _real_download_file(self, url, fpath):
+        logger.info(f"Starting download from {url}...")
         response = requests.get(url, stream=True)
+
         if response.status_code == 200:
             with open(fpath.encode('utf-8'), 'wb') as f:
                 for chunk in response.iter_content(chunk_size=8192):
                     f.write(chunk)
+            logger.info(f"Successfully download file to {fpath}.")
             return True
+        else:
+            logger.error(f"failed to download file from {url}. ssttus code: {response.status_code}")
         return False
 
     # this saves the downloaded zoom video files to database.
@@ -179,6 +189,4 @@ class ZoomRecording(object):
             zoom_id=recording_id, zoom_video_file_url=video_url,
             zoom_name=filename
         )
-        zoom_download_url_database.save()
-
-    
+        zoom_download_url_database.save()    
