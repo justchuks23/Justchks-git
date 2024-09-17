@@ -173,7 +173,7 @@ class ZoomRecording(object):
         with open(downloaded_files, 'a+') as zoom_video_files:
             zoom_video_files.write('{}\n'.format(recording_id))
                         
-        # this saves the video from local storage to database using the models
+        # this saves the video from local storage to database using the models.
         zoom_download_url_database = ZoomYouTubeFile.objects.create(
             user=user,
             zoom_id=recording_id, zoom_video_file_url=video_url,

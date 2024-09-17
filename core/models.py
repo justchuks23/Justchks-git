@@ -6,7 +6,7 @@ from django.utils.text import slugify
 from django.contrib.auth import get_user_model
 
 
-# Create your models here
+# Create your models here.
 
 CustomUser = get_user_model()
 
