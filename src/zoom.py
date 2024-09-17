@@ -16,7 +16,7 @@ ZoomJWTClient class is used for authentication of the zoom credentials
 using the jwt_auth function parameters.
 """
 
-# Set up logging
+# Set up logging.
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
