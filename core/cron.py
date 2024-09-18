@@ -28,6 +28,7 @@ def run_user_zoom_downloader(official_data):
     from_day_delta = official_data['from_day_delta']
     page_size = official_data['page_size']
 
+    logger.info(official_data)
     logger.info(f"Retrieving custom user for: {user}")
 
     # Get the custom user or raise an error if it doesn't exist
