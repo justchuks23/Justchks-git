@@ -56,7 +56,7 @@ def run_user_zoom_downloader(official_data):
             duration_min=min_duration,
             filter_meeting_by_name=settings.FILTER_MEETING_BY_NAME,
             only_meeting_names=settings.ONLY_MEETING_NAMES,
-            from_day_delta=start_date,
+            start_date=start_date,
             end_date=end_date,
             page_size=page_size
         )
