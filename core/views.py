@@ -92,8 +92,8 @@ class GetZoomVideoView(LoginRequiredMixin, View):
                 'zoom_account_id': official.zoom_account_id,
                 'zoom_email': official.zoom_email,
                 'min_duration': get_zoom.min_duration,
-                'start_date': get_zoom.start_date,
-                'end_date': get_zoom.end_date,
+                'start_time': get_zoom.start_time,
+                'end_time': get_zoom.end_time,
                 'page_size': get_zoom.page_size
             }
 
