@@ -25,8 +25,8 @@ def run_user_zoom_downloader(official_data):
     zoom_account_id = official_data['zoom_account_id']
     zoom_email = official_data['zoom_email']
     min_duration = official_data['min_duration']
-    start_date = official_data['start_date,']
-    end_date = official_data['end_date,']
+    from_day_delta = official_data['from_day_delta']
+    to_day_delta = official_data['to_day_delta']
     page_size = official_data['page_size']
 
     logger.info(official_data)
@@ -56,8 +56,8 @@ def run_user_zoom_downloader(official_data):
             duration_min=min_duration,
             filter_meeting_by_name=settings.FILTER_MEETING_BY_NAME,
             only_meeting_names=settings.ONLY_MEETING_NAMES,
-            start_date=start_date,
-            end_date=end_date,
+            from_day_delta=from_day_delta,
+            to_day_delta=to_day_delta,
             page_size=page_size
         )
 
