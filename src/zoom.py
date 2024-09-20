@@ -66,21 +66,27 @@ NOTE: call a model class to save the videos to database in the _save_to_db funct
 
 class ZoomRecording(object):
     def __init__(self, client, email, duration_min=10, filter_meeting_by_name=False,
-                 only_meeting_names=None, start_time=7, end_time=None, page_size=10):
+                 only_meeting_names=None, from_day_delta=7, to_day_delta=0, page_size=10):
 
         self.client = client
         self.email = email
         self.duration_min = duration_min
         self.filter_meeting_by_name = filter_meeting_by_name
         self.only_meeting_names = only_meeting_names or []
-        self.start_time = start_time
-        self.end_time = end_time
+        self.from_day_delta = from_day_delta
+        self.to_day_delta = to_day_delta
         self.page_size = page_size
 
     def get_meetings(self):
+        # Calculate the 'from' and 'to' dates
+        
         """ Changed from page_size to self.page_size """
 
-        uri = f"users/{self.email}/recordings?from={self.start_time.strftime('%Y-%m-%d')}&to={self.end_time.strftime('%Y-%m-%d')}&page_size={self.page_size}"
+        uri = (
+            f"users/{self.email}/recordings?from="
+            f"{(datetime.utcnow() - timedelta(days=self.from_day_delta)).strftime('%Y-%m-%d')}&to="
+            f"{(datetime.utcnow() - timedelta(days=self.to_day_delta)).strftime('%Y-%m-%d')}&page_size={self.page_size}"
+        )
         resp = self.client.get(uri)
         print(resp.content)
         if resp.status_code != 200:
