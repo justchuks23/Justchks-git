@@ -73,14 +73,14 @@ class ZoomRecording(object):
         self.duration_min = duration_min
         self.filter_meeting_by_name = filter_meeting_by_name
         self.only_meeting_names = only_meeting_names or []
-        self.from_day_delta = start_date
+        self.start_date = start_date
         self.end_date = end_date
         self.page_size = page_size
 
     def get_meetings(self):
         """ Changed from page_size to self.page_size """
 
-        uri = f"users/{self.email}/recordings?from={self.from_day_delta.strftime('&Y-%m-%d')}%to={self.end_date.strftime('%Y-%m-%d')}&page_size={self.page_size}"
+        uri = f"users/{self.email}/recordings?from={self.start_date.strftime('%Y-%m-%d')}&to={self.end_date.strftime('%Y-%m-%d')}&page_size={self.page_size}"
         resp = self.client.get(uri)
         print(resp.content)
         if resp.status_code != 200:
