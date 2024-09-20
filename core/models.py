@@ -54,7 +54,7 @@ class ZoomVideoCredential(models.Model):
     user = models.ForeignKey(UserCredential, on_delete=models.CASCADE, related_name='credential_get_zoom', null=True)
     min_duration = models.IntegerField(default=10, null=True, blank=True)
     start_date = models.IntegerField(default=7, null=True, blank=True)
-    end_date = models.DateField()
+    end_date = models.DateField(null=True, blank=True)
     page_size = models.IntegerField(default=10, null=True, blank=True)
 
     def __str__(self):
