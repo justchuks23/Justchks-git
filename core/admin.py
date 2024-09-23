@@ -15,7 +15,7 @@ class UserCredentialAdmin(admin.ModelAdmin):
 
 @admin.register(ZoomVideoCredential)
 class ZoomVideoCredentialAdmin(admin.ModelAdmin):
-    list_display = ['user', 'min_duration', 'from_day_delta', 'to_day_delta','page_size']
+    list_display = ['user', 'min_duration', 'from_day_delta','page_size']
 
 
 @admin.register(ZoomYouTubeFile)
