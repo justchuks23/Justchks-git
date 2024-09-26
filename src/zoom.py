@@ -88,7 +88,6 @@ class ZoomRecording(object):
             f"{(self.to_day_delta).strftime('%Y-%m-%d')}&page_size={self.page_size}"
         )
         resp = self.client.get(uri)
-        print(resp.content)
         if resp.status_code != 200:
             print(f"Get meeting status error: {resp.status_code}. Detail: {resp.content}")
             return None
