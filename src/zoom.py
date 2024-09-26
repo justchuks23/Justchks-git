@@ -107,7 +107,6 @@ class ZoomRecording(object):
 
     def download_meetings(self, user, save_dir, downloaded_files):
         meetings = self.get_meetings()
-        print(meetings)
         if not meetings:
             print("Does not exists meetings.")
             return 
