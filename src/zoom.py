@@ -84,8 +84,8 @@ class ZoomRecording(object):
 
         uri = (
             f"users/{self.email}/recordings?from="
-            f"{(timedelta(days=self.from_day_delta)).strftime('%Y-%m-%d')}&to="
-            f"{(timedelta(days=self.to_day_delta)).strftime('%Y-%m-%d')}&page_size={self.page_size}"
+            f"{(self.from_day_delta).strftime('%Y-%m-%d')}&to="
+            f"{(self.to_day_delta).strftime('%Y-%m-%d')}&page_size={self.page_size}"
         )
         resp = self.client.get(uri)
         print(resp.content)
