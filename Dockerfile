@@ -19,14 +19,10 @@ RUN apt-get update && \
     apt-get install -y libgl1-mesa-glx \
     libglib2.0-0 \
     build-essential \
-    python3-dev
-
-# Ensure Python3 and Python venv are properly set up
-RUN apt-get update && \
-    apt-get install --reinstall -y python3 python3-venv && \
-
-RUN apt-get update && \
-    apt-get install -y python3-pip
+    python3-dev \
+    python3-pip && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
 
