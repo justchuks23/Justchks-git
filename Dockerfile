@@ -12,6 +12,7 @@ RUN apt-get update && \
     apache2-utils \
     python3 \
     libapache2-mod-wsgi-py3
+    apt-get clean
 
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
@@ -20,10 +21,17 @@ RUN apt-get update && \
     libglib2.0-0 \
     build-essential \
     python3-dev
+    apt-get clean
+
+# Ensure Python3 and Python venv are properly set up
+RUN apt-get update && \
+    apt-get install --reinstall -y python3 python3-venv && \
+    apt-get clean
 
 # Install pip
 RUN apt-get update && \
     apt-get install -y python3-pip
+    apt-get clean
 
 COPY requirements.txt .
 
