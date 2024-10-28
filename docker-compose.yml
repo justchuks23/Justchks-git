@@ -19,7 +19,7 @@ services:
       retries: 10
       interval: 10s
       
-  # Redis
+  # redis
   redis-james-django-chukwu:
     image: redis:alpine
     container_name: redis_4_test
@@ -49,7 +49,7 @@ services:
       #- DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL
       #- DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
 
-  # Celery
+  # celery
   celery:
     restart: always
     build: ./
