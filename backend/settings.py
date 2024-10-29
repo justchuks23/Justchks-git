@@ -115,14 +115,15 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-     'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'new-mysql',
-         'USER': 'root',
-         'PASSWORD': 'root_password@mysql',
-         'HOST': 'db',
-         'PORT': 3306,
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'new-mysql',
+        'USER': 'root',
+        'PASSWORD': 'root_password@mysql',
+        'HOST': 'db',
+        'PORT': 3306,
     }
-
+}
 
 #DATABASES = {
  #   'default': {
