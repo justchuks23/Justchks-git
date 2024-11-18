@@ -19,7 +19,7 @@ from .tasks import upload_to_youtube_from_dir
 
 from src.get_google_refresh_token import get_token
 logger = logging.getLogger(__name__)
-# Create your views here
+# Create your views here.
 
 
 class AdminLoginView(View):

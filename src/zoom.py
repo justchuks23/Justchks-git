@@ -78,7 +78,7 @@ class ZoomRecording(object):
         self.page_size = page_size
 
     def get_meetings(self):
-        # Calculate the 'from' and 'to' dates
+        # Calculate the 'from' and 'to' date
         
         """ Changed from page_size to self.page_size """
 
