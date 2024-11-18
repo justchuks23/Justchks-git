@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import UserCredential, ZoomVideoCredential, ZoomYouTubeFile
 from .forms import UserCrendentialAdminForm
 
-# Register your models here.
+# Register your model here.
 
 
 @admin.register(UserCredential)
