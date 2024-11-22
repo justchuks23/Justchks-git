@@ -1,0 +1,81 @@
+stages:
+    - build
+    - push
+    - deploy
+variables:
+    GIT_STRATEGY: clone
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+    SERVER_IP: 40.117.178.47
+    SERVER_USER: james_chukwu
+    SERVER_PASSWORD: james@123!
+    Z2Y_IMAGE: cron-z2y-djangoo
+    Z2Y_CONTAINER: cron-z2y-djangoo
+    SECRET_KEY: django-insecure-72-=h#)@y#a-7*h@od4+_e4oi89%!-e6d@0_4=9+&bqd=1x(vj
+    #DEBUG: False
+    DJANGO_SUPERUSER_USERNAME: admin
+    DJANGO_SUPERUSER_EMAIL: admin@gmail.com
+    DJANGO_SUPERUSER_PASSWORD: admin
+ 
+   
+build: 
+    stage: build    
+    image: docker:20.10.13-alpine3.15
+    services:
+        - docker:20.10.13-dind-alpine3.15
+    tags:
+        - development
+    before_script:
+        - chmod u+x scripts/before_script.sh
+        - ./scripts/before_script.sh
+    script:
+        - chmod u+x scripts/build_script.sh
+        - ./scripts/build_script.sh
+    
+        #- chmod u+x .env 
+        - if [ -f ".env" ]; then echo ".env exists in the artifact."; else echo ".env does not exist in the artifact."; fi
+    
+    artifacts:
+        expire_in: "4 hrs"
+        paths:
+            - zoom_youtube_integration.tar 
+    #only:
+      #- master
+      #- merge_requests
+
+
+push:
+    stage: push
+    image: docker:20.10.13-alpine3.15
+    tags:
+        - development
+    before_script:
+        - ls scripts/*
+        - chmod u+x scripts/before_script.sh
+        - ./scripts/before_script.sh
+        
+    script:
+        - chmod u+x scripts/push_script.sh
+        - ./scripts/push_script.sh
+        
+    ######### Uncomment the lines below to install and enable docker ############
+        - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S chmod u+x docker_installation_script.sh && echo '$SERVER_PASSWORD' | sudo -S ./docker_installation_script.sh"
+
+       
+    #only:
+      #- master
+
+deploy:
+    stage: deploy
+    image: docker:20.10.13-alpine3.15
+    tags:
+        - development
+    before_script:
+        - chmod u+x scripts/before_script.sh
+        - ./scripts/before_script.sh
+    script: 
+       
+       - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S sh -c 'export Z2Y_IMAGE=\"$Z2Y_IMAGE\" && export SECRET_KEY=\"$SECRET_KEY\" && export DJANGO_SUPERUSER_USERNAME=$DJANGO_SUPERUSER_USERNAME && export DJANGO_SUPERUSER_EMAIL=$DJANGO_SUPERUSER_EMAIL && export DJANGO_SUPERUSER_PASSWORD=$DJANGO_SUPERUSER_PASSWORD && chmod u+x deploy_script.sh && ./deploy_script.sh'"
+
+
+      
