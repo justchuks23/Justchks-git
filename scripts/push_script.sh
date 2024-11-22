@@ -1,0 +1,1 @@
+sshpass -p $SERVER_PASSWORD scp -r -o StrictHostKeyChecking=no zoom_youtube_integration.tar Dockerfile docker-compose.yml scripts/docker_installation_script.sh deploy_script.sh entrypoint.sh site_conf.conf $SERVER_USER@$SERVER_IP:~/
