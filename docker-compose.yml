@@ -30,15 +30,15 @@ services:
 
   # myApp
   cron-z2y-django:
-    build: ./
-    #image: $Z2Y_IMAGE
+    #build: ./
+    image: $Z2Y_IMAGE
     container_name: cron-django-4-test
     volumes:
       - mydata:/app/data
       - static:/app/staticfiles
       - media:/app/media
     ports:
-      - "8083:80"
+      - "8089:80"
     depends_on:
       db: 
         condition: service_healthy   
