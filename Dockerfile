@@ -83,7 +83,7 @@ RUN chmod -R 755 .
 RUN chmod +x entrypoint.sh
 
 RUN chmod +x entrypoint.sh
-EXPOSE 5000
+EXPOSE 8089
 
 
 CMD ["./entrypoint.sh"]
