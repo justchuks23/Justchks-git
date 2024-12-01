@@ -52,8 +52,8 @@ class TimeModel(models.Model):
 class ZoomVideoCredential(models.Model):
     user = models.ForeignKey(UserCredential, on_delete=models.CASCADE, related_name='credential_get_zoom', null=True)
     min_duration = models.IntegerField(default=10, null=True, blank=True)
-    from_day_delta = models.IntegerField(default=7, null=True, blank=True)
-    to_day_delta = models.IntegerField(null=True, blank=True)
+    from_day_delta = models.DateTimeField(default=7, null=True, blank=True)
+    to_day_delta = models.DateTimeField(null=True, blank=True)
     page_size = models.IntegerField(default=10, null=True, blank=True)
 
     def __str__(self):
@@ -64,7 +64,7 @@ class ZoomYouTubeFile(models.Model):
     user = models.ForeignKey(UserCredential, on_delete=models.CASCADE, related_name='credential_zoom', null=True)
     zoom_id = models.CharField(max_length=256, null=True, blank=True, unique=True)
     slug = models.SlugField(max_length=256, unique=True, blank=True)
-    zoom_name = models.CharField(max_length=256, blank=True, null=True, verbose_name='Zoom name', default='Not available')
+    zoom_name = models.TextField(max_length=256, blank=True, null=True, verbose_name='Zoom name', default='Not available')
     zoom_video_file_url = models.URLField(max_length=800, verbose_name='Zoom video link', blank=True, null=True, default='Not available')
     youtube_video_file_url = models.URLField(verbose_name='YouTube video link', null=True, blank=True)
     youtube_link_status = models.BooleanField(default=False, verbose_name='YouTube link status')
