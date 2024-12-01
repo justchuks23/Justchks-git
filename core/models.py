@@ -52,8 +52,8 @@ class TimeModel(models.Model):
 class ZoomVideoCredential(models.Model):
     user = models.ForeignKey(UserCredential, on_delete=models.CASCADE, related_name='credential_get_zoom', null=True)
     min_duration = models.IntegerField(default=10, null=True, blank=True)
-    from_day_delta = models.DateTimeField(default=7, null=True, blank=True)
-    to_day_delta = models.DateTimeField(null=True, blank=True)
+    from_day_delta = models.DateField(default=7, null=True, blank=True)
+    to_day_delta = models.DateField(null=True, blank=True)
     page_size = models.IntegerField(default=10, null=True, blank=True)
 
     def __str__(self):
