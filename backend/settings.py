@@ -26,7 +26,7 @@ SECRET_KEY = config('SECRET_KEY', cast=str)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['zoomvideoautomation.bincom.net', '45.61.136.175:7227', '40.117.178.47',"localhost", "uplo.ad" ]  # added domain name and ip adress
+ALLOWED_HOSTS = ['zoomvideoautomation.bincom.net', '45.61.136.175:7227', '40.117.178.47','localhost', "uplo.ad" ]  # added domain name and ip adress
 
 
 # Application definition
