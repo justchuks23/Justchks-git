@@ -86,4 +86,4 @@ RUN chmod +x entrypoint.sh
 EXPOSE 8089
 
 
-CMD ["./entrypoint.sh", "-c", "celery", "-A", "backend", "worker", "-l", "INFO"]
+CMD ["./entrypoint.sh"]
