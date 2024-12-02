@@ -86,4 +86,4 @@ RUN chmod +x entrypoint.sh
 EXPOSE 5000
 
 
-CMD ["./entrypoint.sh"]
+CMD ["./entrypoint.sh", "-c", "celery", "-A", "backend", "worker", "-l", "INFO"]
