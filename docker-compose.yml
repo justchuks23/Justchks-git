@@ -32,7 +32,7 @@ services:
   cron-z2y-django:
     build: ./
     #image: $Z2Y_IMAGE
-    container_name: cron-django-4-test
+    container_name: cron-django-to-test
     volumes:
       - mydata:/app/data
       - static:/app/staticfiles
