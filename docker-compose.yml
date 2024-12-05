@@ -1,4 +1,5 @@
-version: "3"
+version: "2.2"
+      
 services:
   db:
     image: mysql:latest
@@ -18,7 +19,6 @@ services:
       timeout: 20s
       retries: 10
       interval: 10s
-      
   # redis
   redis-james-django-chukwu:
     image: redis:alpine
@@ -38,7 +38,7 @@ services:
       - static:/app/staticfiles
       - media:/app/media
     ports:
-      - "8083:80"
+      - "8089:80"
     depends_on:
       db: 
         condition: service_healthy   
