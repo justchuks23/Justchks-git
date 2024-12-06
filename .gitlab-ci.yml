@@ -75,4 +75,8 @@ deploy:
         - ./scripts/before_script.sh
     script: 
        
+       
        - sshpass -p $SERVER_PASSWORD ssh -tt -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "echo '$SERVER_PASSWORD' | sudo -S sh -c 'export Z2Y_IMAGE=\"$Z2Y_IMAGE\" && export SECRET_KEY=\"$SECRET_KEY\" && export DJANGO_SUPERUSER_USERNAME=$DJANGO_SUPERUSER_USERNAME && export DJANGO_SUPERUSER_EMAIL=$DJANGO_SUPERUSER_EMAIL && export DJANGO_SUPERUSER_PASSWORD=$DJANGO_SUPERUSER_PASSWORD && chmod u+x deploy_script.sh && ./deploy_script.sh'"
+
+
+      

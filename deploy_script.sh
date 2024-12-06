@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 set -x  # Enable debugging
 
 sudo docker load --input zoom_youtube_integration.tar

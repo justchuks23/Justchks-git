@@ -65,4 +65,3 @@ volumes:
   mydata:
   static:
   media:
-#
