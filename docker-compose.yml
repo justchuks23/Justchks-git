@@ -3,7 +3,7 @@ version: "2.2"
 services:
   db:
     image: mysql:latest
-    container_name: db_test
+    container_name: db_to_test
     restart: 'always'
     volumes:
       - mydata:/var/lib/mysql
@@ -30,9 +30,9 @@ services:
 
   # myApp
   cron-z2y-django:
-    #build: ./
-    image: $Z2Y_IMAGE
-    container_name: cron-django-4-test
+    build: ./
+    #image: $Z2Y_IMAGE
+    container_name: cron-django-to-test
     volumes:
       - mydata:/app/data
       - static:/app/staticfiles
@@ -53,7 +53,7 @@ services:
   celery:
     restart: always
     build: ./
-    container_name: celery_4_test
+    container_name: celery_to_test
     command: celery -A backend worker -l INFO
     depends_on:
       - redis-james-django-chukwu
@@ -65,3 +65,4 @@ volumes:
   mydata:
   static:
   media:
+#
