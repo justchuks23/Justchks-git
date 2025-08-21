@@ -176,25 +176,35 @@ class ZoomRecording(object):
         response = requests.get(url, stream=True)
 
         if response.status_code == 200:
-            with open(fpath.encode('utf-8'), 'wb') as f:
+            with open(fpath, 'wb') as f:
                 for chunk in response.iter_content(chunk_size=8192):
                     f.write(chunk)
-            logger.info(f"Successfully download file to {fpath}.")
-            return True
+            
+            # Rename the file (e.g., append a timestamp to avoid overwriting)
+            new_filename = fpath.replace('.mp4', f"_{datetime.now().strftime('%Y%m%d%H%M%S')}.mp4")
+            os.rename(fpath, new_filename)
+
+            logger.info(f"Successfully downloaded and renamed file to {new_filename}.")
+            return new_filename  # Return the new file path
         else:
-            logger.error(f"failed to download file from {url}. ssttus code: {response.status_code}")
-        return False
+            logger.error(f"Failed to download file from {url}. Status code: {response.status_code}")
+        return None
 
     # this saves the downloaded zoom video files to database.
 
     def _save_to_db(self, user, downloaded_files, recording_id, video_url, filename):
         with open(downloaded_files, 'a+') as zoom_video_files:
-            zoom_video_files.write('{}\n'.format(recording_id))
-                        
+            zoom_video_files.write('{}\n'.format(recording_id))                
         # this saves the video from local storage to database using the models.
-        zoom_download_url_database = ZoomYouTubeFile.objects.create(
-            user=user,
-            zoom_id=recording_id, zoom_video_file_url=video_url,
-            zoom_name=filename
-        )
-        zoom_download_url_database.save()    
+        # Check if a ZoomYouTubeFile instance already exists for the recording_id
+        zoom_video, created = ZoomYouTubeFile.objects.get_or_create(
+                user=user,
+                zoom_id=recording_id,
+                defaults={'zoom_video_file_url': video_url}  # Default values if new
+            )
+        zoom_video.zoom_name = filename
+        zoom_video.save()
+        if created:
+            logger.info(f"New ZoomYouTubeFile created for recording ID: {recording_id}.")
+        else:
+            logger.info(f"Updated ZoomYouTubeFile for recording ID: {recording_id}.")

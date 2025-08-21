@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (
     ZoomVideoListView, AdminLoginView, AdminLogoutView,
-    GetZoomVideoView, ZoomVideoDetailView, UploadDetailView,
+    GetZoomVideoView, ZoomVideoDetailView,  UploadDetailView,
     AdminPasswordResetView, AdminPasswordResetDoneView,
     AdminPasswordResetConfirmView, AdminPasswordResetCompleteView
 )

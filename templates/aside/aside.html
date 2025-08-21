@@ -19,6 +19,9 @@
                         <span class="nav-link-text ms-1">{{ request.user.username }}</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/site-admin/ " class="nav-link text-white">Admin</a>
+                </li>
                 <hr class="horizontal light mt-0 mb-2">
 
                 {% url 'main:home' request.user.id  as url %}

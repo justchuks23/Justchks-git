@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl nav-div-flex" id="navbarBlur" data-scroll="true">
         <div class="nav-flex1">
-            <h6 class="font-weight-bolder mb-0">Dashboard<span class="font-weight-light"> - {{ request.user.username }}</span></h6>
+            <h6 class="font-weight-bolder mb-0"><a href="/site-admin/" class="text-decoration-none">Admin</a>Dashboard<span class="font-weight-light"> - {{ request.user.username }}</span></h6>
         </div>
         <div class="nav-flex2 search-zoom">
             <div class="ms-md-auto pe-md-3 search-box">

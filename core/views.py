@@ -72,7 +72,7 @@ class ZoomVideoListView(LoginRequiredMixin, ListView):
     context_object_name = 'zoom_files'
     paginate_by = 3
     model = ZoomYouTubeFile
-
+    
 
 class GetZoomVideoView(LoginRequiredMixin, View):
     Timeview = TimeModel
@@ -92,7 +92,7 @@ class GetZoomVideoView(LoginRequiredMixin, View):
                 'zoom_account_id': official.zoom_account_id,
                 'zoom_email': official.zoom_email,
                 'min_duration': get_zoom.min_duration,
-                'from_day_delta': get_zoom.from_day_delta,
+                'from_day_delta': get_zoom.from_daym_delta,
                 'to_day_delta': get_zoom.to_day_delta,
                 'page_size': get_zoom.page_size
             }
@@ -233,17 +233,18 @@ class UploadFormView(SingleObjectMixin, FormView):
         zoom_video = self.object
         user_id = form.cleaned_data['user_id']
         zoom_id = form.cleaned_data['zoom_id']
+        custom_zoom_title = form.cleaned_data.get('custom_zoom_title', zoom_id)
         official = get_object_or_404(UserCredential, user=user_id)
 
         try:
             # uploading video to youtube
-            video_file_path = join(settings.MEDIA_ROOT, zoom_id)
+            video_file_path = join(settings.MEDIA_ROOT, zoom_video.zoom_name)
             # using the YouTube credentials and putting that in an instance
             youtube_url = upload_to_youtube_from_dir.delay(
                 google_client_id=official.google_client_id,
                 google_client_secret=official.google_client_secret,
                 google_refresh_token=official.google_refresh_token,
-                video_path=video_file_path, title=zoom_id)
+                video_path=video_file_path, title=zoom_video.zoom_name)
 
             try:
                 if youtube_url is None or youtube_url == '':

@@ -93,54 +93,64 @@ class FFMpegHandler(object):
 
 
 class YoutubeRecording(object):
-    def __init__(self,
-                 client_id,
-                 client_secret,
-                 refresh_token,
-                 video_handler_class=FFMpegHandler):
+    def __init__(self, client_id, client_secret, refresh_token, video_handler_class=FFMpegHandler):
         self.client = YoutubeClient(client_id, client_secret, refresh_token)
         self.video_handler = video_handler_class()
 
-    def upload_from_dir(self, video_path: str,
-                        title: str,
-                        privacy_status='unlisted',
-                        notify=True,
-                        remove_file=False):
+    def upload_from_dir(self, video_path: str, title: str, privacy_status='unlisted', notify=True, remove_file=False):
         """
         Uploads a video to YouTube.
 
-        :param notify:
-        :param remove_file:
         :param video_path: The file path to the video file.
         :param title: The title of the video.
         :param privacy_status: The privacy status of the video (default: 'unlisted').
+        :param notify: Whether to send a notification upon successful upload.
+        :param remove_file: Whether to delete the file after upload.
         :return: The YouTube video URL.
         """
 
+        # Ensure we reference the absolute, correct path
         video_file_path = os.path.abspath(video_path)
 
+        # Check if the file exists; if not, find the latest .mp4 file
         if not os.path.exists(video_file_path):
-            raise FileNotFoundError(f"File not found in this directory: {video_path}")
+            logging.warning(f"Video file not found at {video_file_path}. Searching for latest .mp4 file in the directory...")
 
+            directory = os.path.dirname(video_file_path)
+            video_files = [f for f in os.listdir(directory) if f.endswith('.mp4')]
+
+            if not video_files:
+                logging.error(f"No video files found in {directory}")
+                raise FileNotFoundError(f"No video files found in {directory}")
+
+            # Sort files by last modified time (latest first)
+            video_files.sort(key=lambda f: os.path.getmtime(os.path.join(directory, f)), reverse=True)
+            video_file_path = os.path.join(directory, video_files[0])
+            logging.info(f"Using latest available file: {video_file_path}")
+
+        # Convert the video if needed
         if settings.ENABLE_VIDEO_CONVERTING:
-            self.video_handler.start(os.path.dirname(video_path), video_path)
+            self.video_handler.start(os.path.dirname(video_file_path), video_file_path)
 
+        # Ensure that we modify the correct title
         title = self.modify_title(title)
 
-        option = dict(
-            file=video_path,
-            title=title,
-            privacyStatus=privacy_status
-        )
-
+        # Upload video
+        option = {
+            "file": video_file_path,
+            "title": title,
+            "privacyStatus": privacy_status
+        }
         video_id = self.upload_video(option)
 
         if not video_id:
+            logging.error("Video upload failed.")
             return None
 
         video_url = f'https://www.youtube.com/watch?v={video_id}'
-        logging_info.info(f'File uploaded: {video_url}')
+        logging.info(f'File uploaded successfully: {video_url}')
 
+        # Send notification if needed
         if notify:
             match = re.search(r'\d{2}-\d{2}-\d{4}', title)
             date = match.group() if match else None
@@ -154,11 +164,13 @@ class YoutubeRecording(object):
             }
             self._send_notification(payload)
 
-        if remove_file:
-            if os.path.exists(video_path):
-                os.remove(video_path)
+        # Remove only the uploaded file if `remove_file=True`
+        if remove_file and os.path.exists(video_file_path):
+            os.remove(video_file_path)
+            logging.info(f"Removed uploaded file: {video_file_path}")
 
         return video_url
+
 
     def modify_title(self, title):
         return title.replace(">", "").replace("<", "")

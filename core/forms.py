@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from .models import UserCredential
+from .models import ZoomYouTubeFile
 
 # create your forms here.
 class AdminLoginForm(AuthenticationForm):
@@ -47,5 +48,5 @@ class UploadYoutubeForm(forms.Form):
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         label='Zoom ID'
     )
-#########
+    custom_zoom_title = forms.CharField(max_length=256, required=False, label='Custom Zoom Title')
 

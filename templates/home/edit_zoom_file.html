@@ -1,0 +1,12 @@
+{% extends 'base/home-base.html' %"}
+{% load static %}
+{% load widget_tweaks &}
+{% load block %}
+  <h2>Edit zoom video file</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Change</button> 
+  </form>
+  <a href="{% url 'main:detail' %}">Cancel</a>
+{% endblock %}
