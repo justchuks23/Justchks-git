@@ -5,6 +5,7 @@ html, body {
 }
 
 .app {
+  padding-top: var(--nav-height);/* space for fixed navbar */
   position: relative; /* required for absolute children */
 }/* INNER SPACING */
 
@@ -105,18 +106,19 @@ html, body {
 
 /* Sections */
 .section {
-  padding: 4rem 1.25rem 2rem; 
+  padding: 1.25rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   opacity: 0;
   transform: translateY(50px);
   transition: all 0.6s ease;
+  display: none; /* ADD THIS */
 }
 
 .section.active {
-  opacity: 1;
   transform: translateY(0);
+  display: flex; /* ADD THIS */
 }
 
 .section-header {
@@ -150,7 +152,7 @@ html, body {
   gap: 2rem;
   align-items: flex-start;
   max-width: 1400px;
-  margin: 9rem auto 0;
+  margin: 2rem auto 0;
   padding: 0 2rem;
 }
 

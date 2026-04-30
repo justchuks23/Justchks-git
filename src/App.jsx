@@ -187,7 +187,6 @@ function App() {
               <div className="detail-section">
                 <h3>Education & Certifications</h3>
                 <ul>
-                  <li>Bachelor's in Computer Science</li>
                   <li>AWS Certified Developer</li>
                   <li>React Developer Certification</li>
                   <li>Continuous learning in emerging technologies</li>
@@ -377,21 +376,21 @@ function App() {
                 <span className="contact-icon">📧</span>
                 <div>
                   <h4>Email</h4>
-                  <p>justin@example.com</p>
+                  <p>justchuks5@gmail.com</p>
                 </div>
               </div>
               <div className="contact-method">
                 <span className="contact-icon">💼</span>
                 <div>
                   <h4>LinkedIn</h4>
-                  <p>linkedin.com/in/justin-dev</p>
+                  <p>https://www.linkedin.com/in/justin-egwuasi-409755340/</p>
                 </div>
               </div>
               <div className="contact-method">
                 <span className="contact-icon">🐙</span>
                 <div>
                   <h4>GitHub</h4>
-                  <p>github.com/justin-dev</p>
+                  <p>https://github.com/justchuks23/Justchks-git</p>
                 </div>
               </div>
             </div>
