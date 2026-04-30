@@ -1,7 +1,32 @@
 /* Global App Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 .app {
-  opacity: 0;
-  transition: opacity 0.8s ease-in-out;
+  position: relative; /* required for absolute children */
+}/* INNER SPACING */
+
+.app::before,
+.app::after {
+  content: "";
+  position: fixed;   /* stick to screen, not content */
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(0, 0, 0, 0.1); /* adjust color */
+  z-index: 0;
+}
+
+/* LEFT LINE */
+.app::before {
+  left: 0;
+}
+
+/* RIGHT LINE */
+.app::after {
+  right: 0;
 }
 
 .app.visible {
@@ -80,7 +105,7 @@
 
 /* Sections */
 .section {
-  padding: 0.15rem 1.25rem 0.05rem;
+  padding: 4rem 1.25rem 2rem; 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -124,8 +149,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: flex-start;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 9rem auto 0;
+  padding: 0 2rem;
 }
 
 .hero-visual {
@@ -203,7 +229,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(30, 64, 175, 0.1);
+  background: rgba(92, 108, 159, 0.1);
   padding: 0.5rem 1rem;
   border-radius: 2rem;
   font-size: 0.9rem;
@@ -300,8 +326,8 @@
 }
 
 .about-card {
-  background: rgba(30, 64, 175, 0.06);
-  border: 1px solid rgba(30, 64, 175, 0.15);
+  background: rgba(72, 135, 117, 0.06);
+  border: 1px solid rgba(108, 111, 125, 0.15);
   border-radius: 1rem;
   padding: 1.5rem;
 }
@@ -470,7 +496,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1rem;
-  max-width: 1200px;
+  max-width: min(1400px, 95%);
   margin: 0 auto;
 }
 
@@ -669,6 +695,11 @@
   margin-bottom: 1rem;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
 .contact-info p {
   font-size: 1.2rem;
   color: var(--text);
