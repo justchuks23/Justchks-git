@@ -264,6 +264,21 @@ function App() {
             automation, and user experience design. Each project represents a unique challenge solved
             with modern technologies and best practices.
           </p>
+          <p>
+            https://transactional-app-1.onrender.com
+          </p> 
+          <p>
+             https://zoomvideoautomation.bincom.net
+          </p>  
+          <p>
+            https://justchks-82xd26sth-justchuks23s-projects.vercel.app
+          </p>
+           <p> 
+            https://justin-dev.great-site.net
+          </p>
+          <p>
+            https://telegram-ai-bot-4m557.onrender.com
+          </p>
           <div className="projects-stats">
             <div className="project-stat">
               <span className="stat-number">50K+</span>
