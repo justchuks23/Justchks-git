@@ -265,19 +265,19 @@ function App() {
             with modern technologies and best practices.
           </p>
           <p>
-            https://transactional-app-1.onrender.com
-          </p> 
-          <p>
-             https://zoomvideoautomation.bincom.net
+            <a href="https://transactional-app-1.onrender.com" target="_blank" rel="noopener noreferrer">visit my Fintecth application</a>
           </p>  
           <p>
-            https://justchks-82xd26sth-justchuks23s-projects.vercel.app
+            <a href="https://zoomvideoautomation.bincom.net" target="_blank" rel="noopener noreferrer">visit my ZoomToYoutube application</a>
+          </p>  
+          <p>
+            <a href="https://justchks-82xd26sth-justchuks23s-projects.vercel.app" target="_blank" rel="noopener noreferrer">Visit My Website</a>
           </p>
-           <p> 
-            https://justin-dev.great-site.net
+          <p> 
+            <a href="https://justin-dev.great-site.net" target="_blank" rel="noopener noreferrer">Visit My Website</a>
           </p>
           <p>
-            https://telegram-ai-bot-4m557.onrender.com
+            <a href="https://telegram-ai-bot-4m557.onrender.com" target="_blank" rel="noopener noreferrer">checkout telegrambot webhook My </a>
           </p>
           <div className="projects-stats">
             <div className="project-stat">
