@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import profileImg from './assets/profile_img.jpg';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero')
   const [isVisible, setIsVisible] = useState(false)
-  const [profilePhoto, setProfilePhoto] = useState(null)
-  const [profilePhotoName, setProfilePhotoName] = useState('')
+  const [profilePhoto] = useState(profileImg);
 
   useEffect(() => {
     setIsVisible(true)
@@ -14,11 +14,6 @@ function App() {
   const handlePhotoChange = (event) => {
     const file = event.target.files?.[0]
     if (!file) return
-
-    const reader = new FileReader()
-    reader.onload = () => setProfilePhoto(reader.result)
-    reader.readAsDataURL(file)
-    setProfilePhotoName(file.name)
   }
 
   const projects = [
@@ -138,9 +133,6 @@ function App() {
                   <span className="profile-icon">JD</span>
                 )}
               </div>
-              <label className="profile-upload-label" htmlFor="hero-profile-upload">
-                {profilePhoto ? 'Update Profile Photo' : 'Upload Profile Photo'}
-              </label>
               <input
                 id="hero-profile-upload"
                 type="file"
@@ -148,7 +140,6 @@ function App() {
                 className="profile-upload"
                 onChange={handlePhotoChange}
               />
-              {profilePhotoName && <p className="profile-upload-name">{profilePhotoName}</p>}
             </div>
             <div className="code-animation">
               <div className="code-line">const developer = &#123;</div>
