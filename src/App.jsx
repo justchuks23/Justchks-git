@@ -4,12 +4,22 @@ import './App.css'
 function App() {
   const [activeSection, setActiveSection] = useState('hero')
   const [isVisible, setIsVisible] = useState(false)
-  const [profilePhoto] = useState('/profile_img.jpg')
- 
+  const [profilePhoto, setProfilePhoto] = useState(null)
+  const [profilePhotoName, setProfilePhotoName] = useState('')
 
   useEffect(() => {
     setIsVisible(true)
   }, [])
+
+  const handlePhotoChange = (event) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    const reader = new FileReader()
+    reader.onload = () => setProfilePhoto(reader.result)
+    reader.readAsDataURL(file)
+    setProfilePhotoName(file.name)
+  }
 
   const projects = [
     {
@@ -110,7 +120,6 @@ function App() {
                 <span>User-Centric Design</span>
               </div>
             </div>
-          </div>
             <div className="hero-buttons">
               <button className="btn primary" onClick={() => setActiveSection('projects')}>
                 View My Work
@@ -123,11 +132,24 @@ function App() {
           <div className="hero-visual">
             <div className="profile-card">
               <div className="profile-placeholder">
-                {profilePhoto 
-                  ? <img src={profilePhoto} alt="Profile" className="profile-photo" />
-                  : <span className="profile-icon">J</span>
-                }
+                {profilePhoto ? (
+                  <img src={profilePhoto} alt="Profile" className="profile-photo" />
+                ) : (
+                  <span className="profile-icon">JD</span>
+                )}
               </div>
+              <label className="profile-upload-label" htmlFor="hero-profile-upload">
+                {profilePhoto ? 'Update Profile Photo' : 'Upload Profile Photo'}
+              </label>
+              <input
+                id="hero-profile-upload"
+                type="file"
+                accept="image/*"
+                className="profile-upload"
+                onChange={handlePhotoChange}
+              />
+              {profilePhotoName && <p className="profile-upload-name">{profilePhotoName}</p>}
+            </div>
             <div className="code-animation">
               <div className="code-line">const developer = &#123;</div>
               <div className="code-line indent">name: 'Justin',</div>
