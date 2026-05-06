@@ -140,13 +140,13 @@ html, body {
   border-radius: 2px;
 }
 
-/* Hero Section */
-.hero-section {
+/* Home Section */
+.Home-section {
   background: linear-gradient(135deg, var(--bg) 0%, rgba(170, 59, 255, 0.05) 100%);
   padding-top: 0.25rem;
 }
 
-.hero-content {
+.Home-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
@@ -156,7 +156,7 @@ html, body {
   padding: 0 2rem;
 }
 
-.hero-visual {
+.Home-visual {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -179,11 +179,11 @@ html, body {
   font-size: 0.95rem;
 }
 
-.hero-text {
+.Home-text {
   animation: slideInLeft 0.8s ease-out;
 }
 
-.hero-title {
+.Home-title {
   font-size: 3.5rem;
   color: var(--text-h);
   margin-bottom: 1rem;
@@ -207,20 +207,20 @@ html, body {
   animation: underline 1s ease-out 0.5s both;
 }
 
-.hero-subtitle {
+.Home-subtitle {
   font-size: 1.8rem;
   color: var(--text);
   margin-bottom: 1.5rem;
 }
 
-.hero-description {
+.Home-description {
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 0.5rem;
   color: var(--text);
 }
 
-.hero-highlights {
+.Home-highlights {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -243,7 +243,7 @@ html, body {
   font-size: 1.2rem;
 }
 
-.hero-buttons {
+.Home-buttons {
   display: flex;
   gap: 1rem;
 }
@@ -282,7 +282,7 @@ html, body {
   color: white;
 }
 
-.hero-visual {
+.Home-visual {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -868,26 +868,26 @@ html, body {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .hero-content,
+  .Home-content,
   .about-content,
   .contact-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 
-  .hero-title {
+  .Home-title {
     font-size: 2.5rem;
   }
 
-  .hero-subtitle {
+  .Home-subtitle {
     font-size: 1.4rem;
   }
 
-  .hero-description {
+  .Home-description {
     font-size: 1rem;
   }
 
-  .hero-highlights {
+  .Home-highlights {
     justify-content: center;
   }
 
@@ -913,7 +913,7 @@ html, body {
     justify-content: center;
   }
 
-  .hero-title {
+  .Home-title {
     font-size: 2rem;
   }
 

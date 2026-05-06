@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import profileImg from './assets/profile_img.jpg';
+import emailjs from '@emailjs/browser'
 
 function App() {
-  const [activeSection, setActiveSection] = useState('hero')
+  const [activeSection, setActiveSection] = useState('Home')
   const [isVisible, setIsVisible] = useState(false)
   const [profilePhoto] = useState(profileImg);
 
@@ -15,7 +16,29 @@ function App() {
     const file = event.target.files?.[0]
     if (!file) return
   }
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formStatus, setFormStatus] = useState('')
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setFormStatus('sending')
+
+    emailjs.send(
+      'YOUR_SERVICE_ID',
+      'YOUR_TEMPLATE_ID',
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+      },
+      'YOUR_PUBLIC_KEY'
+    )
+    .then(() => {
+      setFormStatus('success')
+      setFormData({ name: '', email: '', message: '' })
+    })
+    .catch(() => setFormStatus('error'))
+  }
   const projects = [
     {
       title: 'Fintech Transaction App',
@@ -74,7 +97,7 @@ function App() {
           <span className="brand-subtitle">Software Developer</span>
         </div>
         <div className="nav-links">
-          {['hero', 'about', 'projects', 'skills', 'contact'].map((section) => (
+          {['Home', 'about', 'projects', 'skills', 'contact'].map((section) => (
             <button
               key={section}
               className={`nav-link ${activeSection === section ? 'active' : ''}`}
@@ -86,18 +109,18 @@ function App() {
         </div>
       </nav>
 
-      <section className={`section hero-section ${activeSection === 'hero' ? 'active' : ''}`}>
-        <div className="hero-content">
-          <div className="hero-text">
-            <h1 className="hero-title">
+      <section className={`section Home-section ${activeSection === 'Home' ? 'active' : ''}`}>
+        <div className="Home-content">
+          <div className="Home-text">
+            <h1 className="Home-title">
               Hi, I'm <span className="highlight">Justin</span>
             </h1>
-            <h2 className="hero-subtitle">Full-Stack Software Developer</h2>
-            <p className="hero-description">
+            <h2 className="Home-subtitle">Full-Stack Software Developer</h2>
+            <p className="Home-description">
               With 3 years of experience crafting digital solutions using Python, React, and PostgreSQL.
               I build scalable applications that automate, simplify, and improve everyday workflows.
             </p>
-            <div className="hero-highlights">
+            <div className="Home-highlights">
               <div className="highlight-item">
                 <span className="highlight-icon"></span>
                 <span>Full-Stack Development</span>
@@ -115,7 +138,7 @@ function App() {
                 <span>User-Centric Design</span>
               </div>
             </div>
-            <div className="hero-buttons">
+            <div className="Home-buttons">
               <button className="btn primary" onClick={() => setActiveSection('projects')}>
                 View My Work
               </button>
@@ -124,7 +147,7 @@ function App() {
               </button>
             </div>
           </div>
-          <div className="hero-visual">
+          <div className="Home-visual">
             <div className="profile-card">
               <div className="profile-placeholder">
                 {profilePhoto ? (
@@ -134,7 +157,7 @@ function App() {
                 )}
               </div>
               <input
-                id="hero-profile-upload"
+                id="Home-profile-upload"
                 type="file"
                 accept="image/*"
                 className="profile-upload"
@@ -147,7 +170,7 @@ function App() {
               <div className="code-line indent">skills: ['Python', 'React', 'PostgreSQL'],</div>
               <div className="code-line indent">experience: '3 years',</div>
               <div className="code-line indent">passionate: true</div>
-              <div className="code-line">&#125;;</div>
+              <div className="code-line">&#125;; </div>
             </div>
           </div>
         </div>
@@ -402,17 +425,42 @@ function App() {
             </div>
           </div>
           <div className="contact-form">
-            <form className="form">
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <input type="text" placeholder="Your Name" className="form-input" />
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="form-input"
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  required
+                />
               </div>
               <div className="form-group">
-                <input type="email" placeholder="Your Email" className="form-input" />
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="form-input"
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  required
+                />
               </div>
               <div className="form-group">
-                <textarea placeholder="Your Message" className="form-textarea" rows="5"></textarea>
+                <textarea
+                  placeholder="Your Message"
+                  className="form-textarea"
+                  rows="5"
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  required
+                />
               </div>
-              <button type="submit" className="btn primary">Send Message</button>
+              <button type="submit" className="btn primary" disabled={formStatus === 'sending'}>
+                {formStatus === 'sending' ? 'Sending...' : 'Send Message'}
+              </button>
+              {formStatus === 'success' && <p style={{color: 'green', marginTop: '1rem'}}>Message sent successfully!</p>}
+              {formStatus === 'error' && <p style={{color: 'red', marginTop: '1rem'}}>Something went wrong. Try again.</p>}
             </form>
           </div>
         </div>
