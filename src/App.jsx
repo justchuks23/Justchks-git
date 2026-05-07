@@ -24,8 +24,8 @@ function App() {
     setFormStatus('sending')
 
     emailjs.send(
-      'service_545lnfa', // service ID
-      'template_rzl185r', // template ID
+      'default_service', // service ID
+      'template_jmun70p', // template ID
       {
         from_name: formData.name,
         from_email: formData.email,
