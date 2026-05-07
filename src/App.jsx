@@ -25,19 +25,24 @@ function App() {
 
     emailjs.send(
       'service_545lnfa', // service ID
-      'template_3uktuqa', // template ID
+      'template_rzl185r', // template ID
       {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
       },
-      'jMUptQG060ZJyrQN3' // public key
+      'PmFKRRcbwyJwFibSZ' // public key
     )
     .then(() => {
       setFormStatus('success')
       setFormData({ name: '', email: '', message: '' })
     })
-    .catch(() => setFormStatus('error'))
+    .catch((error) => {
+    console.log('EmailJS Error:', error)
+    console.log('Status:', error.status)
+    console.log('Text:', error.text)
+    setFormStatus('error')
+  })
   }
   const projects = [
     {
