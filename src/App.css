@@ -902,52 +902,6 @@ html, body {
 }
 
 @media (max-width: 768px) {
-  .contact-content {
-    grid-template-columns: 1fr; /* stack vertically */
-    gap: 1rem;
-  }
-
-  .contact-method {
-    flex-direction: row;
-    align-items: center;
-    text-align: left;
-    padding: 0.75rem;
-  }
-
-  .contact-method h4 {
-    font-size: 0.95rem;
-  }
-
-  .contact-method p {
-    font-size: 0.8rem;
-    word-break: break-all; /* breaks long URLs */
-  }
-
-  .contact-icon {
-    font-size: 1.5rem;
-    flex-shrink: 0; /* prevents icon from shrinking */
-  }
-
-  .contact-form {
-    padding: 1rem;
-  }
-
-  .contact-methods {
-    gap: 0.75rem;
-  }
-
-  .contact-benefits,
-  .contact-availability {
-    padding: 0.75rem;
-  }
-
-  .form-input,
-  .form-textarea {
-    padding: 0.75rem;
-    font-size: 0.95rem;
-  }
-}
-
   .navbar {
     padding: 1rem;
     flex-direction: column;
@@ -975,7 +929,7 @@ html, body {
   .profile-icon {
     font-size: 5rem;
   }
-
+}
 
 .about-quote {
   background: linear-gradient(135deg, rgba(30, 64, 175, 0.05), rgba(255, 255, 255, 0.95));
