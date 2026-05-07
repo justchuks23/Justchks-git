@@ -903,34 +903,36 @@ html, body {
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 1rem;
-    flex-direction: column;
-    gap: 1rem;
+    padding: 0.6rem 1rem;
+    flex-direction: row;        /* keep brand and links on same row */
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .nav-brand {
+    flex: 1;
+  }
+
+  .brand-text {
+    font-size: 1.1rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.85rem;
   }
 
   .nav-links {
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    gap: 0.3rem;
+    justify-content: flex-end;
   }
 
-  .Home-title {
-    font-size: 2rem;
-  }
-
-  .section-header h2 {
-    font-size: 2rem;
-  }
-
-  .profile-placeholder {
-    width: 200px;
-    height: 200px;
-  }
-
-  .profile-icon {
-    font-size: 5rem;
+  .nav-link {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
   }
 }
-
 .about-quote {
   background: linear-gradient(135deg, rgba(30, 64, 175, 0.05), rgba(255, 255, 255, 0.95));
   border-left: 4px solid var(--accent);
