@@ -59,7 +59,7 @@ body {
   width: 100%;              /* FULL WIDTH */
   max-width: 100%;          /* remove constraint */
   margin: 0;                /* no centering */
-  text-align: left;
+  text-align: center;
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
   min-height: 100svh;
