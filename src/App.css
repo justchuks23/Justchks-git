@@ -329,7 +329,6 @@ html, body {
 
 .about-card {
   background: rgba(72, 135, 117, 0.06);
-  border: 1px solid rgba(108, 111, 125, 0.15);
   border-radius: 1rem;
   padding: 1.5rem;
 }
