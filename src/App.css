@@ -106,7 +106,7 @@ html, body {
 
 /* Sections */
 .section {
-  padding: calc(var(--nav-height) + 1.5rem) 2rem 1.5rem; /* top | sides | bottom */
+  padding: calc(var(--nav-height) + 2rem) 2rem 1.5rem; /* top | sides | bottom */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
