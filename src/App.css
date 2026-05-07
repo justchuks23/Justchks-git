@@ -1025,7 +1025,35 @@ html, body {
   color: var(--text);
   line-height: 1.7;
 }
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr; /* stack info and form vertically */
+  }
 
+  .contact-method p {
+    word-break: break-all; /* fixes long URLs overflowing */
+    font-size: 0.8rem;
+  }
+
+  .contact-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0; /* prevents icon squishing */
+  }
+
+  .contact-methods {
+    gap: 0.75rem;
+  }
+
+  .contact-form {
+    padding: 1rem;
+  }
+
+  .form-input,
+  .form-textarea {
+    padding: 0.75rem;
+    box-sizing: border-box; /* prevents form inputs from overflowing */
+  }
+}
 /* Responsive trust cards in about section */
 @media (max-width: 1024px) {
   .trust-grid {
