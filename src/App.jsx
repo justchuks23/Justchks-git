@@ -24,14 +24,14 @@ function App() {
     setFormStatus('sending')
 
     emailjs.send(
-      'EmailServiceID@26',
-      '__ejs-test-mail-service__',
+      '__ejs-test-mail-service__', // service ID
+      'EmailServiceID@26', // template ID
       {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
       },
-      'jMUptQG060ZJyrQN3'
+      'jMUptQG060ZJyrQN3' // public key
     )
     .then(() => {
       setFormStatus('success')
