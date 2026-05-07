@@ -66,6 +66,11 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    border-left: none;
+    border-right: none;
+  }
 }
 
 h1,
