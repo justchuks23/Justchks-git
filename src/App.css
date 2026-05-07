@@ -47,6 +47,7 @@ html, body {
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
+  text-align: center;
   align-items: center;
   z-index: 1000;
   transition: all 0.3s ease;
@@ -1053,6 +1054,35 @@ html, body {
   .form-textarea {
     padding: 0.75rem;
     box-sizing: border-box; /* prevents form inputs from overflowing */
+  }
+    /* Fix text overflow */
+  .trust-card {
+    text-align: left;
+    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .trust-card p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .about-card {
+    text-align: left;
+    padding: 1rem;
+  }
+
+  .about-card p,
+  .about-card li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Fix footer not stretching full width */
+  .footer {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto; /* pushes to bottom */
   }
 }
 /* Responsive trust cards in about section */
