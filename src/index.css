@@ -60,30 +60,19 @@ body {
   max-width: 100%;          /* remove constraint */
   margin: 0;                /* no centering */
   text-align: center;
+  box-sizing: border-box;
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-
+  
   @media (max-width: 768px) {
     border-left: none;
     border-right: none;
   }
 }
 
-.section-header {
-  text-align: center;
-}
-
-.navbar {
-  text-align: center;
-}
-
-.footer {
-  text-align: center;
-}
 
 h1,
 h2 {

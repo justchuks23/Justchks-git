@@ -1061,6 +1061,7 @@ html, body {
     width: 100%;
     box-sizing: border-box;
     margin-top: auto; /* pushes to bottom */
+    text-align: center;
   }
 }
 /* Responsive trust cards in about section */
