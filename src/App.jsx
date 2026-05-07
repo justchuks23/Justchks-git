@@ -24,14 +24,14 @@ function App() {
     setFormStatus('sending')
 
     emailjs.send(
-      'YOUR_SERVICE_ID',
-      'YOUR_TEMPLATE_ID',
+      'EmailServiceID@26',
+      '__ejs-test-mail-service__',
       {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
       },
-      'YOUR_PUBLIC_KEY'
+      'jMUptQG060ZJyrQN3'
     )
     .then(() => {
       setFormStatus('success')
@@ -170,7 +170,7 @@ function App() {
               <div className="code-line indent">skills: ['Python', 'React', 'PostgreSQL'],</div>
               <div className="code-line indent">experience: '3 years',</div>
               <div className="code-line indent">passionate: true</div>
-              <div className="code-line">&#125;; </div>
+              <div className="code-line">&#125;; ✔️</div>
             </div>
           </div>
         </div>
