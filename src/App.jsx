@@ -284,7 +284,7 @@ function App() {
             with modern technologies and best practices.
           </p>
           <p>
-            <a href="https://transactional-app-1.onrender.com" target="_blank" rel="noopener noreferrer">visit my Fintecth application</a>
+            <a href="https://transactional-app-git-master-justchuks23s-projects.vercel.app/" target="_blank" rel="noopener noreferrer">visit my Fintecth application</a>
           </p>  
           <p>
             <a href="https://zoomvideoautomation.bincom.net" target="_blank" rel="noopener noreferrer">visit my ZoomToYoutube application</a>
