@@ -367,7 +367,7 @@ html, body {
   position: absolute;
   left: 0;
   color: var(--accent);
-  padding-right: 0.5rem;
+  padding-right: 1.5rem;
 }
 
 .stats {
@@ -689,33 +689,6 @@ html, body {
   font-size: 0.9rem;
   font-weight: 500;
   border: 1px solid rgba(30, 64, 175, 0.2);
-}
-
-@media (max-width: 768px) {
-  .skills-content {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 1rem;
-  }
-
-  .skills-grid {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .skill-item {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .skills-quote {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .additional-skills {
-    justify-content: center;
-  }
 }
 
 .contact-content {
