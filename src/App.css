@@ -327,7 +327,11 @@ html, body {
   margin-bottom: 0.8rem;
   color: var(--text);
 }
-
+@media (max-width: 768px) {
+  .about-text {
+    padding-right: 0.5rem; /* adds space on left and right sides */
+  }
+}
 .about-card {
   background: rgba(72, 135, 117, 0.06);
   border-radius: 1rem;
@@ -363,6 +367,7 @@ html, body {
   position: absolute;
   left: 0;
   color: var(--accent);
+  padding-right: 0.5rem;
 }
 
 .stats {
@@ -685,6 +690,34 @@ html, body {
   font-weight: 500;
   border: 1px solid rgba(30, 64, 175, 0.2);
 }
+
+@media (max-width: 768px) {
+  .skills-content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 1rem;
+  }
+
+  .skills-grid {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .skill-item {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .skills-quote {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .additional-skills {
+    justify-content: center;
+  }
+}
+
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -999,6 +1032,12 @@ html, body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  .trust-card {
+    margin-right: 1rem; /* adds space on right side */
+  }
+}
+
 .trust-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 22px 32px rgba(30, 64, 175, 0.16);
@@ -1027,6 +1066,7 @@ html, body {
   color: var(--text);
   line-height: 1.7;
 }
+
 @media (max-width: 768px) {
   .contact-content {
     grid-template-columns: 1fr; /* stack info and form vertically */
