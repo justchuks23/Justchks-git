@@ -1060,7 +1060,6 @@ html, body {
   .footer {
     width: 100%;
     max-width: 600px;
-    box-sizing: border-box;
     margin-top: auto; /* pushes to bottom */
     text-align: center;
   }
