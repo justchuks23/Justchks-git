@@ -74,23 +74,9 @@ body {
     border-left: none;  /* ← remove side borders on mobile */
     border-right: none; /* ← remove side borders on mobile */
   }
-
   .app {
     width: 100%;
     box-sizing: border-box;
-    padding-top: var(--nav-height);/* space for fixed navbar */
-    position: relative; /* required for absolute children */
-  }/* INNER SPACING */
-
-.app::before,
-.app::after {
-  content: "";
-  position: fixed;   /* stick to screen, not content */
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: rgba(0, 0, 0, 0.1); /* adjust color */
-  z-index: 0;
   }
 }
 
