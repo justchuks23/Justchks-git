@@ -498,7 +498,7 @@ html, body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1rem;
-  max-width: 100px;
+  max-width: min(1400px, 95%);
   margin: 0 auto;
 }
 
@@ -932,7 +932,6 @@ html, body {
     font-size: 0.75rem;
     padding: 0.3rem 0.5rem;
   }
-
 }
 .about-quote {
   background: linear-gradient(135deg, rgba(30, 64, 175, 0.05), rgba(255, 255, 255, 0.95));
@@ -1055,51 +1054,6 @@ html, body {
   .form-textarea {
     padding: 0.75rem;
     box-sizing: border-box; /* prevents form inputs from overflowing */
-  }
-
-  .projects-section {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    box-sizing: border-box;
-  }
-
-  .projects-intro {
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0 auto;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-    width: 100%;
-    max-width: 100%; /* ← remove any max-width constraint */
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0 auto;
-  }
-
-  .project-card {
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center; /* center card content */
-  }
-
-  .project-tech {
-    justify-content: center; /* center tech tags */
-  }
-
-  .projects-cta {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    margin: 0.5rem 0;
-  }
-
-  .projects-stats {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
   }
 
   /* Fix footer not stretching full width */
