@@ -498,7 +498,7 @@ html, body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1rem;
-  max-width: min(1400px, 95%);
+  max-width: 100px;
   margin: 0 auto;
 }
 
