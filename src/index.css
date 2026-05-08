@@ -54,24 +54,6 @@ body {
   margin: 0;
 }
 
-@media (max-width: 768px) {
-  #root {
-    --nav-height: 130px;
-    border-left: none;  /* ← remove side borders on mobile */
-    border-right: none; /* ← remove side borders on mobile */
-  }
-
-  .app {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .app::before,
-  .app::after {
-    display: none;        /* ← add this */
-  }
-}
-
 #root {
   --nav-height: 80px; 
   width: 100%;              /* FULL WIDTH */
