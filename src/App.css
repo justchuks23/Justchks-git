@@ -942,7 +942,32 @@ html, body {
     font-size: 0.75rem;
     padding: 0.3rem 0.5rem;
   }
+    .trust-card {
+    margin-right: 0;        /* ← remove the unequal margin */
+  }
+
+  /* Fix 2: ensure all grid containers are full width */
+  .contact-content,
+  .about-content,
+  .Home-content {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Fix 3: projects grid full width on mobile */
+  .projects-grid {
+    grid-template-columns: 1fr;   /* single column */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Fix 4: section padding equal on both sides */
+  .section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
+
 .about-quote {
   background: linear-gradient(135deg, rgba(30, 64, 175, 0.05), rgba(255, 255, 255, 0.95));
   border-left: 4px solid var(--accent);
