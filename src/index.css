@@ -67,12 +67,26 @@ body {
   display: flex;
   flex-direction: column;
   
-  @media (max-width: 768px) {
-    border-left: none;
-    border-right: none;
+@media (max-width: 768px) {
+  #root {
+    --nav-height: 130px;
+    border-left: none;  /* ← remove side borders on mobile */
+    border-right: none; /* ← remove side borders on mobile */
+  }
+
+  .footer {
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 2rem 1rem;
+  }
+
+  .app {
+    width: 100%;
+    box-sizing: border-box;
   }
 }
-
 
 h1,
 h2 {
