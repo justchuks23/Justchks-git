@@ -1055,15 +1055,40 @@ html, body {
     padding: 0.75rem;
     box-sizing: border-box; /* prevents form inputs from overflowing */
   }
+    .about-content {
+    grid-template-columns: 1fr; /* stack columns */
+    padding: 0 1rem;
+  }
 
+  .about-card {
+    text-align: left;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .about-card ul {
+    text-align: left;
+    padding-left: 1rem;
+  }
+
+  .trust-grid {
+    padding: 0;
+  }
+
+  .trust-card {
+    text-align: left;
+    box-sizing: border-box;
+  }
+}
   /* Fix footer not stretching full width */
   .footer {
     width: 100%;
     max-width: 600px;
+    box-sizing: border-box;
     margin-top: auto; /* pushes to bottom */
     text-align: center;
   }
-}
+
 /* Responsive trust cards in about section */
 @media (max-width: 1024px) {
   .trust-grid {
