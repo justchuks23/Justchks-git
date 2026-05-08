@@ -68,6 +68,19 @@ body {
   flex-direction: column;
 }
 
+@media (max-width: 768px) {
+  #root {
+    --nav-height: 130px;
+    border-left: none;  /* ← remove side borders on mobile */
+    border-right: none; /* ← remove side borders on mobile */
+  }
+  
+  .app {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 h1,
 h2 {
   font-family: var(--heading);

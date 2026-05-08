@@ -1059,12 +1059,11 @@ html, body {
   /* Fix footer not stretching full width */
   .footer {
     width: 100%;
-    max-width: 100%; /* ← change 600px to 100% */
+    max-width: 100%;
     margin-left: 0;
     margin-right: 0;
-    margin-top: auto;
+    margin-top: auto; /* pushes to bottom */
     text-align: center;
-    box-sizing: border-box; /* ← add this */
   }
 }
 /* Responsive trust cards in about section */
