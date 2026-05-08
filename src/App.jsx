@@ -122,7 +122,7 @@ function App() {
             </h1>
             <h2 className="Home-subtitle">Full-Stack Software Developer</h2>
             <p className="Home-description">
-              With 3 years of experience crafting digital solutions using Python, React, and PostgreSQL.
+              With 4 years of experience crafting digital solutions using Python, React, and PostgreSQL.
               I build scalable applications that automate, simplify, and improve everyday workflows.
             </p>
             <div className="Home-highlights">
@@ -173,7 +173,7 @@ function App() {
               <div className="code-line">const developer = &#123;</div>
               <div className="code-line indent">name: 'Justin',</div>
               <div className="code-line indent">skills: ['Python', 'React', 'PostgreSQL'],</div>
-              <div className="code-line indent">experience: '3 years',</div>
+              <div className="code-line indent">experience: '4 years',</div>
               <div className="code-line indent">passionate: true</div>
               <div className="code-line">&#125;; ✔️</div>
             </div>
@@ -234,7 +234,7 @@ function App() {
             </div>
             <div className="stats">
               <div className="stat">
-                <span className="stat-number">3+</span>
+                <span className="stat-number">4+</span>
                 <span className="stat-label">Years Experience</span>
               </div>
               <div className="stat">
