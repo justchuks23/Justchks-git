@@ -111,10 +111,6 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;        /* ← ADD THIS */
-  text-align: center;         /* ← ADD THIS */
-  width: 100%;                /* ← ADD THIS */
-  box-sizing: border-box;
   transform: translateY(50px);
   transition: all 0.6s ease;
   display: none; /* ADD THIS */
@@ -160,6 +156,15 @@ html, body {
   margin: 2rem auto 0;
   padding: 0 2rem;
 }
+
+@media (max-width: 768px) {
+  .Home-content {
+    grid-template-columns: 1fr;
+    padding: 0;        /* remove the 2rem padding that shifts content */
+    margin: 1rem auto 0;
+    width: 100%;
+  }
+}  
 
 .Home-visual {
   display: flex;
@@ -324,6 +329,12 @@ html, body {
   margin: 0 auto;
   align-items: start;
 }
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+}
 
 .about-text p {
   font-size: 1.1rem;
@@ -333,7 +344,7 @@ html, body {
 }
 @media (max-width: 768px) {
   .about-text {
-    padding-right: 0.5rem; /* adds space on left and right sides */
+    padding-right: 0; /* adds space on left and right sides */
   }
 }
 .about-card {
@@ -379,6 +390,13 @@ html, body {
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;   /* reduce gap on small screens */
+  }
 }
 
 .stat {
@@ -509,6 +527,15 @@ html, body {
   gap: 1rem;
   max-width: min(1400px, 95%);
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+
+  /* Fix 1: projects grid - cards were too wide */
+  .projects-grid {
+    grid-template-columns: 1fr;  /* single column, full width */
+    max-width: 100%;
+  }
 }
 
 .project-card {
@@ -701,6 +728,14 @@ html, body {
   gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  /* Fix 2: contact grid - force single column */
+  .contact-content {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
 }
 
 .form-group {
@@ -942,32 +977,7 @@ html, body {
     font-size: 0.75rem;
     padding: 0.3rem 0.5rem;
   }
-    .trust-card {
-    margin-right: 0;        /* ← remove the unequal margin */
-  }
-
-  /* Fix 2: ensure all grid containers are full width */
-  .contact-content,
-  .about-content,
-  .Home-content {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  /* Fix 3: projects grid full width on mobile */
-  .projects-grid {
-    grid-template-columns: 1fr;   /* single column */
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  /* Fix 4: section padding equal on both sides */
-  .section {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
 }
-
 .about-quote {
   background: linear-gradient(135deg, rgba(30, 64, 175, 0.05), rgba(255, 255, 255, 0.95));
   border-left: 4px solid var(--accent);

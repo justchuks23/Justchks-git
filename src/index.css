@@ -54,6 +54,19 @@ body {
   margin: 0;
 }
 
+@media (max-width: 768px) {
+  #root {
+    --nav-height: 130px;
+    border-left: none;  /* ← remove side borders on mobile */
+    border-right: none; /* ← remove side borders on mobile */
+  }
+
+  .app {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 #root {
   --nav-height: 80px; 
   width: 100%;              /* FULL WIDTH */
@@ -66,18 +79,6 @@ body {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-}
-
-@media (max-width: 768px) {
-  #root {
-    --nav-height: 130px;
-    border-left: none;  /* ← remove side borders on mobile */
-    border-right: none; /* ← remove side borders on mobile */
-  }
-  .app {
-    width: 100%;
-    box-sizing: border-box;
-  }
 }
 
 h1,
