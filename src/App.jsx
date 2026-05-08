@@ -290,7 +290,7 @@ function App() {
             <a href="https://zoomvideoautomation.bincom.net" target="_blank" rel="noopener noreferrer">visit my ZoomToYoutube application</a>
           </p>  
           <p>
-            <a href="https://justchks-82xd26sth-justchuks23s-projects.vercel.app" target="_blank" rel="noopener noreferrer">Visit My Website</a>
+            <a href="https://justchks-git.vercel.app" target="_blank" rel="noopener noreferrer">Visit My Website</a>
           </p>
           <p> 
             <a href="https://justin-dev.great-site.net" target="_blank" rel="noopener noreferrer">Visit My Website</a>
