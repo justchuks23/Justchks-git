@@ -65,6 +65,11 @@ body {
     width: 100%;
     box-sizing: border-box;
   }
+
+  .app::before,
+  .app::after {
+    display: none;        /* ← add this */
+  }
 }
 
 #root {
