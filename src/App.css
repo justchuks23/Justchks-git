@@ -1139,6 +1139,7 @@ html, body {
   gap: 1rem;
   margin-top: 1rem;
   margin-bottom: 2rem;
+  align-items: center;
 }
 
 .nav-button {
