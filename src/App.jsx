@@ -283,21 +283,52 @@ function App() {
             automation, and user experience design. Each project represents a unique challenge solved
             with modern technologies and best practices.
           </p>
-          <p>
-            <a href="https://transactional-app-git-master-justchuks23s-projects.vercel.app/" target="_blank" rel="noopener noreferrer">visit my Fintecth application</a>
-          </p>  
-          <p>
-            <a href="https://zoomvideoautomation.bincom.net" target="_blank" rel="noopener noreferrer">visit my ZoomToYoutube application</a>
-          </p>  
-          <p>
-            <a href="https://justchks-git.vercel.app" target="_blank" rel="noopener noreferrer">Visit My Website</a>
-          </p>
-          <p> 
-            <a href="https://justin-dev.great-site.net" target="_blank" rel="noopener noreferrer">Visit My Website</a>
-          </p>
-          <p>
-            <a href="https://telegram-ai-bot-4m557.onrender.com" target="_blank" rel="noopener noreferrer">checkout telegrambot webhook My </a>
-          </p>
+        <div className="nav-buttons">
+          <a
+            href="https://transactional-app-git-master-justchuks23s-projects.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-button"
+          >
+            Visit My Fintech Application
+          </a>
+
+          <a
+            href="https://zoomvideoautomation.bincom.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-button"
+          >
+            Visit My ZoomToYoutube Application
+          </a>
+
+          <a
+            href="https://justchks-git.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-button"
+          >
+            Visit My Website
+          </a>
+
+          <a
+            href="https://justin-dev.great-site.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-button"
+          >
+            Visit My Portfolio Website
+          </a>
+
+          <a
+            href="https://telegram-ai-bot-4m557.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-button"
+          >
+            Checkout My Telegram Bot Webhook
+          </a>
+        </div>
           <div className="projects-stats">
             <div className="project-stat">
               <span className="stat-number">50K+</span>
